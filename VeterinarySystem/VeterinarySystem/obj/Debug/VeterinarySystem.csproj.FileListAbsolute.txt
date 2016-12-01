@@ -1,1 +1,9 @@
 C:\Users\Dovile\Documents\Visual Studio 2015\Projects\VeterinarySystem\VeterinarySystem\bin\Debug\VeterinarySystem.exe.config
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\VeterinarySystem.exe.config
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\VeterinarySystem.exe
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\VeterinarySystem.pdb
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.csprojResolveAssemblyReference.cache
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.Properties.Resources.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.csproj.GenerateResource.Cache
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.exe
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.pdb
