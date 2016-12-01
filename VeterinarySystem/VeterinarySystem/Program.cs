@@ -19,6 +19,10 @@ namespace VeterinarySystem
             Application.Run(new Form1());
 
             Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello World!");
         }
     }
 }
