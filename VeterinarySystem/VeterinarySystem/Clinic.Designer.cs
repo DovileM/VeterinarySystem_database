@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.insertNewVet = new System.Windows.Forms.Button();
-            this.deleteVet = new System.Windows.Forms.Button();
             this.editProfile = new System.Windows.Forms.Button();
             this.information = new System.Windows.Forms.Button();
             this.logout = new System.Windows.Forms.Button();
@@ -64,16 +63,6 @@
             this.insertNewVet.Text = "New Vet";
             this.insertNewVet.UseVisualStyleBackColor = true;
             // 
-            // deleteVet
-            // 
-            this.deleteVet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deleteVet.Location = new System.Drawing.Point(203, 193);
-            this.deleteVet.Name = "deleteVet";
-            this.deleteVet.Size = new System.Drawing.Size(172, 28);
-            this.deleteVet.TabIndex = 3;
-            this.deleteVet.Text = "Delete Vet";
-            this.deleteVet.UseVisualStyleBackColor = true;
-            // 
             // editProfile
             // 
             this.editProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,7 +87,7 @@
             // logout
             // 
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
-            this.logout.Location = new System.Drawing.Point(289, 271);
+            this.logout.Location = new System.Drawing.Point(289, 239);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(86, 41);
             this.logout.TabIndex = 6;
@@ -109,11 +98,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(416, 326);
+            this.ClientSize = new System.Drawing.Size(407, 301);
             this.Controls.Add(this.logout);
             this.Controls.Add(this.information);
             this.Controls.Add(this.editProfile);
-            this.Controls.Add(this.deleteVet);
             this.Controls.Add(this.insertNewVet);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -129,7 +117,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button insertNewVet;
-        private System.Windows.Forms.Button deleteVet;
         private System.Windows.Forms.Button editProfile;
         private System.Windows.Forms.Button information;
         private System.Windows.Forms.Button logout;
