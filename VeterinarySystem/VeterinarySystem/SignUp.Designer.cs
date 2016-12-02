@@ -60,9 +60,9 @@
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.Location = new System.Drawing.Point(177, 9);
+            this.label1.Location = new System.Drawing.Point(127, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 74);
+            this.label1.Size = new System.Drawing.Size(270, 88);
             this.label1.TabIndex = 0;
             // 
             // label2
