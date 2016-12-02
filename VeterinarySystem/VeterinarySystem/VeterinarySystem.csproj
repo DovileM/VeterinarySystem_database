@@ -55,6 +55,18 @@
     <Compile Include="Clinic.Designer.cs">
       <DependentUpon>Clinic.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClinicNewVet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClinicNewVet.Designer.cs">
+      <DependentUpon>ClinicNewVet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClinicProfile.Designer.cs">
+      <DependentUpon>ClinicProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +95,12 @@
     </Compile>
     <EmbeddedResource Include="Clinic.resx">
       <DependentUpon>Clinic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClinicNewVet.resx">
+      <DependentUpon>ClinicNewVet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClinicProfile.resx">
+      <DependentUpon>ClinicProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogIn.resx">
       <DependentUpon>LogIn.cs</DependentUpon>

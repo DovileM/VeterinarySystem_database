@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Vet));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.logout = new System.Windows.Forms.Button();
+            this.editProfile = new System.Windows.Forms.Button();
+            this.insertNewPatient = new System.Windows.Forms.Button();
+            this.editPatient = new System.Windows.Forms.Button();
+            this.ownerInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -54,54 +54,54 @@
             this.label2.Size = new System.Drawing.Size(231, 60);
             this.label2.TabIndex = 2;
             // 
-            // button5
+            // logout
             // 
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.Location = new System.Drawing.Point(292, 269);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(86, 41);
-            this.button5.TabIndex = 7;
-            this.button5.UseVisualStyleBackColor = true;
+            this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
+            this.logout.Location = new System.Drawing.Point(292, 269);
+            this.logout.Name = "logout";
+            this.logout.Size = new System.Drawing.Size(86, 41);
+            this.logout.TabIndex = 7;
+            this.logout.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // editProfile
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(176, 84);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(178, 27);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Edit Profile";
-            this.button1.UseVisualStyleBackColor = true;
+            this.editProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editProfile.Location = new System.Drawing.Point(176, 84);
+            this.editProfile.Name = "editProfile";
+            this.editProfile.Size = new System.Drawing.Size(178, 27);
+            this.editProfile.TabIndex = 8;
+            this.editProfile.Text = "Edit Profile";
+            this.editProfile.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // insertNewPatient
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(176, 117);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(178, 27);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "New patient";
-            this.button2.UseVisualStyleBackColor = true;
+            this.insertNewPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.insertNewPatient.Location = new System.Drawing.Point(176, 117);
+            this.insertNewPatient.Name = "insertNewPatient";
+            this.insertNewPatient.Size = new System.Drawing.Size(178, 27);
+            this.insertNewPatient.TabIndex = 9;
+            this.insertNewPatient.Text = "New patient";
+            this.insertNewPatient.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // editPatient
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(176, 150);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(178, 27);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Edit patient";
-            this.button3.UseVisualStyleBackColor = true;
+            this.editPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editPatient.Location = new System.Drawing.Point(176, 150);
+            this.editPatient.Name = "editPatient";
+            this.editPatient.Size = new System.Drawing.Size(178, 27);
+            this.editPatient.TabIndex = 10;
+            this.editPatient.Text = "Edit patient";
+            this.editPatient.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // ownerInfo
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(176, 183);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(178, 27);
-            this.button4.TabIndex = 11;
-            this.button4.Text = "Patient\'s owner\'s info";
-            this.button4.UseVisualStyleBackColor = true;
+            this.ownerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ownerInfo.Location = new System.Drawing.Point(176, 183);
+            this.ownerInfo.Name = "ownerInfo";
+            this.ownerInfo.Size = new System.Drawing.Size(178, 27);
+            this.ownerInfo.TabIndex = 11;
+            this.ownerInfo.Text = "Patient\'s owner\'s info";
+            this.ownerInfo.UseVisualStyleBackColor = true;
             // 
             // Vet
             // 
@@ -109,11 +109,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(394, 322);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.ownerInfo);
+            this.Controls.Add(this.editPatient);
+            this.Controls.Add(this.insertNewPatient);
+            this.Controls.Add(this.editProfile);
+            this.Controls.Add(this.logout);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Vet";
@@ -127,10 +127,10 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button logout;
+        private System.Windows.Forms.Button editProfile;
+        private System.Windows.Forms.Button insertNewPatient;
+        private System.Windows.Forms.Button editPatient;
+        private System.Windows.Forms.Button ownerInfo;
     }
 }
