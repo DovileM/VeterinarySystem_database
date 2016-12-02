@@ -16,7 +16,7 @@ namespace VeterinarySystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Veterinary());
+            Application.Run(new LogIn());
 
             Console.WriteLine("Hello World!");
             Console.WriteLine("Hello World!");
