@@ -55,11 +55,17 @@
     <Compile Include="Clinic.Designer.cs">
       <DependentUpon>Clinic.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClinicInformation.cs">
+    <Compile Include="ClinicAllInformation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClinicInformation.Designer.cs">
-      <DependentUpon>ClinicInformation.cs</DependentUpon>
+    <Compile Include="ClinicAllInformation.Designer.cs">
+      <DependentUpon>ClinicAllInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClinicOnceInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClinicOnceInformation.Designer.cs">
+      <DependentUpon>ClinicOnceInformation.cs</DependentUpon>
     </Compile>
     <Compile Include="ClinicNewVet.cs">
       <SubType>Form</SubType>
@@ -102,8 +108,11 @@
     <EmbeddedResource Include="Clinic.resx">
       <DependentUpon>Clinic.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClinicInformation.resx">
-      <DependentUpon>ClinicInformation.cs</DependentUpon>
+    <EmbeddedResource Include="ClinicAllInformation.resx">
+      <DependentUpon>ClinicAllInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClinicOnceInformation.resx">
+      <DependentUpon>ClinicOnceInformation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClinicNewVet.resx">
       <DependentUpon>ClinicNewVet.cs</DependentUpon>

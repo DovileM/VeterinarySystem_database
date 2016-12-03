@@ -16,7 +16,7 @@ namespace VeterinarySystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ClinicInformation());
+            Application.Run(new ClinicAllInformation());
 
             //ClinicInformation ci = new ClinicInformation();
             //ci.Show();

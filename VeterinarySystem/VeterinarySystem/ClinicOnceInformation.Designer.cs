@@ -1,6 +1,6 @@
 ﻿namespace VeterinarySystem
 {
-    partial class ClinicInformation
+    partial class ClinicOnceInformation
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClinicInformation));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClinicOnceInformation));
             this.label1 = new System.Windows.Forms.Label();
             this.choose = new System.Windows.Forms.ComboBox();
             this.pCodeTextBox = new System.Windows.Forms.TextBox();

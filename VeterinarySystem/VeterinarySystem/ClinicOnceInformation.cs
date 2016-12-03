@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace VeterinarySystem
 {
-    public partial class ClinicInformation : Form
+    public partial class ClinicOnceInformation : Form
     {
-        public ClinicInformation()
+        public ClinicOnceInformation()
         {
             InitializeComponent();
         }
