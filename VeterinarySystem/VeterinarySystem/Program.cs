@@ -16,13 +16,10 @@ namespace VeterinarySystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LogIn());
+            Application.Run(new ClinicAllInformation());
 
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("Hello World!");
+            //ClinicInformation ci = new ClinicInformation();
+            //ci.Show();
         }
     }
 }

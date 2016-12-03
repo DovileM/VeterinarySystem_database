@@ -7,3 +7,12 @@ C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\V
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.csproj.GenerateResource.Cache
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.exe
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.pdb
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.Clinic.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.ClinicNewVet.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.ClinicProfile.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.LogIn.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.Owner.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.SignUp.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.Vet.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.ClinicOnceInformation.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.ClinicAllInformation.resources

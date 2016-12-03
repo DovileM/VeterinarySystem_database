@@ -35,6 +35,7 @@
             this.editProfile = new System.Windows.Forms.Button();
             this.information = new System.Windows.Forms.Button();
             this.logout = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -56,7 +57,7 @@
             // insertNewVet
             // 
             this.insertNewVet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.insertNewVet.Location = new System.Drawing.Point(203, 162);
+            this.insertNewVet.Location = new System.Drawing.Point(203, 195);
             this.insertNewVet.Name = "insertNewVet";
             this.insertNewVet.Size = new System.Drawing.Size(172, 25);
             this.insertNewVet.TabIndex = 2;
@@ -77,11 +78,11 @@
             // information
             // 
             this.information.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.information.Location = new System.Drawing.Point(203, 129);
+            this.information.Location = new System.Drawing.Point(203, 162);
             this.information.Name = "information";
             this.information.Size = new System.Drawing.Size(172, 27);
             this.information.TabIndex = 5;
-            this.information.Text = "Information";
+            this.information.Text = "All information";
             this.information.UseVisualStyleBackColor = true;
             // 
             // logout
@@ -93,12 +94,23 @@
             this.logout.TabIndex = 6;
             this.logout.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(203, 129);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(172, 27);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Once information";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Clinic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(407, 301);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.logout);
             this.Controls.Add(this.information);
             this.Controls.Add(this.editProfile);
@@ -120,5 +132,6 @@
         private System.Windows.Forms.Button editProfile;
         private System.Windows.Forms.Button information;
         private System.Windows.Forms.Button logout;
+        private System.Windows.Forms.Button button1;
     }
 }
