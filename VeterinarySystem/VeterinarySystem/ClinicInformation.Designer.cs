@@ -49,6 +49,7 @@
             this.pCodeLabel = new System.Windows.Forms.Label();
             this.gifLabel = new System.Windows.Forms.Label();
             this.animalComboBox = new System.Windows.Forms.ComboBox();
+            this.backLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -62,12 +63,11 @@
             // choose
             // 
             this.choose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.choose.ForeColor = System.Drawing.SystemColors.WindowText;
             this.choose.FormattingEnabled = true;
             this.choose.Items.AddRange(new object[] {
             "Vet",
-            "All vets",
-            "Owner",
-            "All owners"});
+            "Owner"});
             this.choose.Location = new System.Drawing.Point(70, 67);
             this.choose.Name = "choose";
             this.choose.Size = new System.Drawing.Size(217, 28);
@@ -257,6 +257,7 @@
             // animalComboBox
             // 
             this.animalComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.animalComboBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.animalComboBox.FormattingEnabled = true;
             this.animalComboBox.Location = new System.Drawing.Point(70, 115);
             this.animalComboBox.Name = "animalComboBox";
@@ -265,12 +266,21 @@
             this.animalComboBox.Text = "Choose the animal";
             this.animalComboBox.Visible = false;
             // 
+            // backLabel
+            // 
+            this.backLabel.Image = ((System.Drawing.Image)(resources.GetObject("backLabel.Image")));
+            this.backLabel.Location = new System.Drawing.Point(12, 100);
+            this.backLabel.Name = "backLabel";
+            this.backLabel.Size = new System.Drawing.Size(329, 258);
+            this.backLabel.TabIndex = 27;
+            // 
             // ClinicInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(353, 418);
+            this.Controls.Add(this.backLabel);
             this.Controls.Add(this.animalComboBox);
             this.Controls.Add(this.gifLabel);
             this.Controls.Add(this.pCodeLabel);
@@ -321,5 +331,6 @@
         private System.Windows.Forms.Label pCodeLabel;
         private System.Windows.Forms.Label gifLabel;
         private System.Windows.Forms.ComboBox animalComboBox;
+        private System.Windows.Forms.Label backLabel;
     }
 }

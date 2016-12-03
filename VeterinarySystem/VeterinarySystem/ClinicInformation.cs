@@ -60,24 +60,19 @@ namespace VeterinarySystem
         private void choose_SelectedIndexChanged(object sender, EventArgs e)
         {
             int select = choose.SelectedIndex;
+            clearVisible();
             switch (select)
             {
-                case 1:
-                    clearVisible();
+                case 0:
                     seeVetLabels();
                     break;
-                case 2:
-                    clearVisible();
-
-                    break;
-                case 3:
-                    clearVisible();
+                case 1:
                     seeOwnerLabels();
                     break;
-                case 4:
-                    clearVisible();
-
-                    break;
+                //case 3:
+                //    break;
+                //case 4:
+                //    break;
             }
         }
 
@@ -115,6 +110,7 @@ namespace VeterinarySystem
 
         private void clearVisible()
         {
+            backLabel.Visible = false;
             pCode.Visible = false;
             pCodeTextBox.Visible = false;
             fName.Visible = false;
