@@ -37,7 +37,7 @@ namespace VeterinarySystem
             _selected = 0;
 
             clinic_pCodeTextBox.Leave += GetClinic_PCode;
-            clinic_pCodeTextBox.Leave += GetCity_FName;
+            city_sNameTextBox.Leave += GetCity_FName;
             sNameTextBox.Leave += GetSName;
             phoneTextBox.Leave += GetPhone;
             streetTextBox.Leave += GetStreet;
@@ -209,7 +209,7 @@ namespace VeterinarySystem
                     insert.Parameters.Add(new SqlParameter("@P", DBNull.Value));
                 else
                     insert.Parameters.Add(new SqlParameter("@P", _phone));
-
+                Trace.WriteLine(_clinic_pCode + "  " + _city_fName + "  " + _sName + "  " + _phone);
 
             }
             else
