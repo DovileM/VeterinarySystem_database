@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dc53635db2ee430781c6897284ee49f8" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="DatabaseVeterinaryModel.Clinic" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseVeterinaryModel.Owner" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseVeterinaryModel.Pet" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseVeterinaryModel.Vet" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseVeterinaryModel.Treatment" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseVeterinaryModel.FK__Vet__Clinic__4F12BBB9" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseVeterinaryModel.FK__Pet__Owner__5006DFF2" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseVeterinaryModel.FK__Treatment__Anima__3552E9B6" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseVeterinaryModel.FK__Treatment__Vet__50FB042B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
