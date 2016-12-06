@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,12 @@ namespace VeterinarySystem
             InitializeComponent();
             _username = name;
             _password = pass;
+            _table = table;
             ClearLabels();
             if (table.Equals("Clinic"))
             {
                 SeeClinicLabels();
+                ShowClinicData();
             }
             else if (table.Equals("Owner"))
             {
@@ -38,6 +41,7 @@ namespace VeterinarySystem
             clinicLabel.Visible = true;
             clinic_pCodeTextBox.Visible = true;
             clinic_pCodeTextBox.Visible = true;
+            city_fNameTextBox.Visible = true;
             cityLabel.Visible = true;
             streetLabel.Visible = true;
             streetTextBox.Visible = true;
@@ -80,7 +84,19 @@ namespace VeterinarySystem
 
         private void ShowClinicData()
         {
-            //naudoti SELECT per ENTITY FRAMEWORK
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
+            {
+                var smth = dataBase.Clinics.Where(c => c.Name.Equals(_username) && c.City.Equals(_password)).Select(p => p);
+                foreach (var item in smth)
+                {
+                    Trace.WriteLine(item.ToString());
+                    clinic_pCodeTextBox.Text = item.Name.ToString();
+                    city_fNameTextBox.Text = item.City.ToString();
+                    streetTextBox.Text = item.Street.ToString();
+                    noTextBox.Text = item.No.ToString();
+                    phoneTextBox.Text = item.Phone.ToString();
+                }
+            }
         }
 
         private void cancel_Click(object sender, EventArgs e)

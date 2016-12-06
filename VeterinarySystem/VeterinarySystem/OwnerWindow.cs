@@ -21,5 +21,10 @@ namespace VeterinarySystem
         {
 
         }
+
+        private void editProfile_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

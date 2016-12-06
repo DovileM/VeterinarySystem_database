@@ -73,6 +73,7 @@
             this.editProfile.TabIndex = 9;
             this.editProfile.Text = "Edit Profile";
             this.editProfile.UseVisualStyleBackColor = true;
+            this.editProfile.Click += new System.EventHandler(this.editProfile_Click);
             // 
             // seePetInfo
             // 
@@ -115,7 +116,7 @@
             this.insertNewPet.UseVisualStyleBackColor = true;
             this.insertNewPet.Click += new System.EventHandler(this.button6_Click);
             // 
-            // Owner
+            // OwnerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,7 +130,7 @@
             this.Controls.Add(this.logout);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Owner";
+            this.Name = "OwnerWindow";
             this.Text = "Owner";
             this.ResumeLayout(false);
 

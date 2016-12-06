@@ -14,12 +14,6 @@ namespace VeterinarySystem
     
     public partial class Pet
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pet()
-        {
-            this.Treatments = new HashSet<Treatment>();
-        }
-    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Owner { get; set; }
@@ -30,7 +24,6 @@ namespace VeterinarySystem
         public string Color { get; set; }
     
         public virtual Owner Owner1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Treatment> Treatments { get; set; }
+        public virtual Treatment Treatment { get; set; }
     }
 }
