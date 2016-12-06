@@ -12,17 +12,41 @@ namespace VeterinarySystem
 {
     public partial class ClinicAllInformationWindow : Form
     {
-        public ClinicAllInformationWindow()
+        private string _clinic;
+        public ClinicAllInformationWindow(string name)
         {
             InitializeComponent();
+            _clinic = name;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void choose_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            int selected = choose.SelectedIndex;
+            switch (selected)
+            {
+                case 0:
+                    PaintTableVets();
+                    break;
+                case 1:
+                    PaintTableOwners();
+                    break;
+                case 2:
+                    PaintTablePets();
+                    break;
+            }
         }
 
-        private void ClinicAllInformation_Load(object sender, EventArgs e)
+        private void PaintTablePets()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PaintTableOwners()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PaintTableVets()
         {
 
         }

@@ -1,60 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VeterinarySystem
 {
     public partial class ClinicOnceInformationWindow : Form
     {
-        public ClinicOnceInformationWindow()
+        private string _clinic;
+        public ClinicOnceInformationWindow(string clinic)
         {
             InitializeComponent();
-        }
-
-        private void ClinicInformation_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
+            _clinic = clinic;
+            chooseVet.Text = "Choose a vet";
+            chooseVet.SelectedIndex = -1;
         }
 
         private void choose_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,22 +23,20 @@ namespace VeterinarySystem
             switch (select)
             {
                 case 0:
-                    seeVetLabels();
+                    SeeVetLabels();
+                    SeeVets();
                     break;
                 case 1:
-                    seeOwnerLabels();
+                    SeeOwnerLabels();
+                    SeeAnimals();
                     break;
-                //case 3:
-                //    break;
-                //case 4:
-                //    break;
             }
         }
-
-        private void seeVetLabels()
+        #region See / Clear
+        private void SeeVetLabels()
         {
-            pCode.Visible = true;
-            pCodeTextBox.Visible = true;
+            chooseVetLabel.Visible = true;
+            chooseVet.Visible = true;
             fName.Visible = true;
             fNameText.Visible = true;
             sName.Visible = true;
@@ -87,32 +44,41 @@ namespace VeterinarySystem
             phone.Visible = true;
             phoneText.Visible = true;
             startedAt.Visible = true;
-            startedAtText.Visible = true;
+            pCodeText.Visible = true;
             animals.Visible = true;
-            animalText.Visible = true;
+            started_animalTypeText.Visible = true;
             seeAllAnimals.Visible = true;
+            count.Visible = true;
+            pCodeLabel.Visible = true;
         }
         
-        private void seeOwnerLabels()
+        private void SeeOwnerLabels()
         {
             chooseLabel.Visible = true;
-            animalComboBox.Visible = true;
             pCodeLabel.Visible = true;
-            gifLabel.Visible = true;
+            animalType.Visible = true;
+            animalComboBox.Visible = true;
+            animalsCount.Visible = true;
+            pCodeText.Visible = true;
+            started_animalTypeText.Visible = true;
             fName.Visible = true;
             fNameText.Visible = true;
             sName.Visible = true;
             sNameText.Visible = true;
             phone.Visible = true;
             phoneText.Visible = true;
-            startedAt.Visible = true;
+            allOwnerAnimals.Visible = true;
         }
 
         private void clearVisible()
         {
+            count.Visible = false;
+            pCodeLabel.Visible = false;
+            animalType.Visible = false;
+            chooseVet.Visible = false;
+            allOwnerAnimals.Visible = false;
             backLabel.Visible = false;
-            pCode.Visible = false;
-            pCodeTextBox.Visible = false;
+            chooseVetLabel.Visible = false;
             fName.Visible = false;
             fNameText.Visible = false;
             sName.Visible = false;
@@ -120,14 +86,70 @@ namespace VeterinarySystem
             phone.Visible = false;
             phoneText.Visible = false;
             startedAt.Visible = false;
-            startedAtText.Visible = false;
+            pCodeText.Visible = false;
             animals.Visible = false;
-            animalText.Visible = false;
+            started_animalTypeText.Visible = false;
             seeAllAnimals.Visible = false;
             chooseLabel.Visible = false;
             animalComboBox.Visible = false;
-            pCodeLabel.Visible = false;
-            gifLabel.Visible = false;
+            animalsCount.Visible = false;
+        }
+        #endregion
+
+        private void SeeAnimals()
+        {
+            //using(VeterinaryEntities dataBase = new VeterinaryEntities())
+            //{
+            //    var animals = dataBase.Pets.Select(p => p.Name);
+            //    foreach (var pet in animals)
+            //    {
+            //        animalComboBox.Items.Add(pet);
+            //    }
+            //}
+        }
+        private void SeeVets()
+        {
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
+            {
+                var vets = dataBase.Vets.Where(v => v.Clinic.Equals(_clinic)).Select(v => new {Name =  v.Name, SurName = v.SurName}).
+                    OrderBy(v => v.SurName);
+                foreach (var vet in vets)
+                {
+                    string user = vet.Name + " " + vet.SurName;
+                    chooseVet.Items.Add(user);
+                }
+            }
+        }
+
+        private void animalComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chooseVet_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selected = chooseVet.SelectedIndex;
+
+            if (selected >= 0)
+            {
+                using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                {
+                    var vets = dataBase.Vets.Where(v => v.Clinic.Equals(_clinic)).
+                        Select(v => new { Name = v.Name, SurName = v.SurName, PCode = v.PCode, Phone = v.Phone, Started = v.StartedAt }).
+                        OrderBy(v => v.SurName).Skip(selected).Take(1);
+                    foreach (var vet in vets)
+                    {
+                        var pets = dataBase.Treatments.Where(t => t.Vet.Equals(vet.PCode) && (t.End >= DateTime.Today)).Count();
+
+                        fNameText.Text = vet.Name;
+                        sNameText.Text = vet.SurName;
+                        phoneText.Text = vet.Phone;
+                        started_animalTypeText.Text = vet.Started.ToString();
+                        pCodeText.Text = vet.PCode;
+                        count.Text = pets.ToString();
+                    }
+                }
+            }
         }
     }
 }

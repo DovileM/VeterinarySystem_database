@@ -34,13 +34,13 @@ namespace VeterinarySystem
 
         private void onceInformation_Click(object sender, EventArgs e)
         {
-            ClinicOnceInformationWindow onceInfo = new ClinicOnceInformationWindow();
+            ClinicOnceInformationWindow onceInfo = new ClinicOnceInformationWindow(_username);
             onceInfo.Show();
         }
 
         private void allInformation_Click(object sender, EventArgs e)
         {
-            ClinicAllInformationWindow allInfo = new ClinicAllInformationWindow();
+            ClinicAllInformationWindow allInfo = new ClinicAllInformationWindow(_username);
             allInfo.Show();
         }
 
