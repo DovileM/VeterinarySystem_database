@@ -7,6 +7,7 @@ namespace VeterinarySystem
     {
         private DateTime? _date;
         private string _phone;
+
         private string _username;
 
         public ClinicNewVetWindow(string name)
