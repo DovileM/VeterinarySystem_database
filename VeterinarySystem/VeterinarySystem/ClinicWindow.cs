@@ -1,30 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VeterinarySystem
 {
     public partial class ClinicWindow : Form
     {
-        public ClinicWindow()
+        private string _username;
+        private string _password;
+        public ClinicWindow(string name, string pass)
         {
             InitializeComponent();
+            _username = name;
+            _password = pass;
         }
 
-        private void Clinic_Load(object sender, EventArgs e)
+        private void logout_Click(object sender, EventArgs e)
         {
-
+            LogInWindow login = new LogInWindow();
+            login.Show();
+            Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void editProfile_Click(object sender, EventArgs e)
         {
+            ProfileWindow profile = new ProfileWindow(_username, _password, "Clinic");
+            profile.Show();
+        }
 
+        private void onceInformation_Click(object sender, EventArgs e)
+        {
+            ClinicOnceInformationWindow onceInfo = new ClinicOnceInformationWindow();
+            onceInfo.Show();
+        }
+
+        private void allInformation_Click(object sender, EventArgs e)
+        {
+            ClinicAllInformationWindow allInfo = new ClinicAllInformationWindow();
+            allInfo.Show();
+        }
+
+        private void insertNewVet_Click(object sender, EventArgs e)
+        {
+            ClinicNewVetWindow vet = new ClinicNewVetWindow();
+            vet.Show();
         }
     }
 }

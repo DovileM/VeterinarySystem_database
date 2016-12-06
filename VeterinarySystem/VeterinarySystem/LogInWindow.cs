@@ -60,7 +60,6 @@ namespace VeterinarySystem
             adapter.Fill(dataSet, "Owner");
             adapter1.Fill(dataSet, "Vet");
             adapter2.Fill(dataSet, "Clinic");
-            bool found = false;
 
             if(FindUser("Name", "SurName", dataSet.Tables["Owner"].Rows))
             {
@@ -76,7 +75,7 @@ namespace VeterinarySystem
             }
             else if(FindUser("Name", "City", dataSet.Tables["Clinic"].Rows))
             {
-                ClinicWindow clinic = new ClinicWindow();
+                ClinicWindow clinic = new ClinicWindow(_username, _password);
                 clinic.Show();
                 Hide();
             }
