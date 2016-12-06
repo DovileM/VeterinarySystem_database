@@ -26,5 +26,11 @@ namespace VeterinarySystem
         {
 
         }
+
+        private void logout_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
     }
 }

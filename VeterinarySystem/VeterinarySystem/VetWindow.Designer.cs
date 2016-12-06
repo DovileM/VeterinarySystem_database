@@ -62,6 +62,7 @@
             this.logout.Size = new System.Drawing.Size(86, 41);
             this.logout.TabIndex = 7;
             this.logout.UseVisualStyleBackColor = true;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // editProfile
             // 
@@ -104,7 +105,7 @@
             this.ownerInfo.Text = "Patient\'s owner\'s info";
             this.ownerInfo.UseVisualStyleBackColor = true;
             // 
-            // Vet
+            // VetWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -117,7 +118,7 @@
             this.Controls.Add(this.logout);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Vet";
+            this.Name = "VetWindow";
             this.Text = "Vet";
             this.Load += new System.EventHandler(this.Vet_Load);
             this.ResumeLayout(false);

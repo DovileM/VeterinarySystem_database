@@ -63,6 +63,7 @@
             this.logout.Size = new System.Drawing.Size(86, 41);
             this.logout.TabIndex = 8;
             this.logout.UseVisualStyleBackColor = true;
+            this.logout.Click += new System.EventHandler(this.logout_Click);
             // 
             // editProfile
             // 

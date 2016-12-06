@@ -16,15 +16,20 @@ namespace VeterinarySystem
 
         private void logout_Click(object sender, EventArgs e)
         {
-            LogInWindow login = new LogInWindow();
-            login.Show();
+            DialogResult = DialogResult.OK;
             Close();
         }
 
         private void editProfile_Click(object sender, EventArgs e)
         {
-            ProfileWindow profile = new ProfileWindow(_username, _password, "Clinic");
-            profile.Show();
+            using (ProfileWindow profile = new ProfileWindow(_username, _password, "Clinic"))
+            {
+                if (profile.ShowDialog() == DialogResult.OK)
+                {
+                    Close();
+                    DialogResult = DialogResult.OK;
+                }
+            }
         }
 
         private void onceInformation_Click(object sender, EventArgs e)
@@ -41,7 +46,7 @@ namespace VeterinarySystem
 
         private void insertNewVet_Click(object sender, EventArgs e)
         {
-            ClinicNewVetWindow vet = new ClinicNewVetWindow();
+            ClinicNewVetWindow vet = new ClinicNewVetWindow(_username);
             vet.Show();
         }
     }

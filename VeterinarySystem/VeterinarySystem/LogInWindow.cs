@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VeterinarySystem
@@ -63,21 +56,33 @@ namespace VeterinarySystem
 
             if(FindUser("Name", "SurName", dataSet.Tables["Owner"].Rows))
             {
-                OwnerWindow owner = new OwnerWindow();
-                owner.Show();
-                Hide();
+                using(OwnerWindow owner = new OwnerWindow())
+                {
+                    Hide();
+                    if (owner.ShowDialog() == DialogResult.OK)
+                        Show();
+                }
+                
+
             }
             else if(FindUser("Name", "SurName", dataSet.Tables["Vet"].Rows))
             {
-                VetWindow vet = new VetWindow();
-                vet.Show();
-                Hide();
+                using (VetWindow vet = new VetWindow())
+                {
+                    Hide();
+                    if (vet.ShowDialog() == DialogResult.OK)
+                        Show();
+                }
             }
             else if(FindUser("Name", "City", dataSet.Tables["Clinic"].Rows))
             {
-                ClinicWindow clinic = new ClinicWindow(_username, _password);
-                clinic.Show();
-                Hide();
+                using (ClinicWindow clinic = new ClinicWindow(_username, _password))
+                {
+                    Hide();
+                    if (clinic.ShowDialog() == DialogResult.OK)
+                        Show();
+                }
+
             }
             else
             {
