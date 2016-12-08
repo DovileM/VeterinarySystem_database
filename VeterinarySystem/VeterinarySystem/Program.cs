@@ -17,7 +17,7 @@ namespace VeterinarySystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LogInWindow());
-            Application.Run(new ClinicAllInformationWindow("Biciulis"));
+            Application.Run(new ClinicOnceInformationWindow("Biciulis"));
 
 
         }

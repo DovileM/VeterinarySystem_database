@@ -33,8 +33,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.choose = new System.Windows.Forms.ComboBox();
             this.cancel = new System.Windows.Forms.Button();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.tableDataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -80,14 +80,15 @@
             this.cancel.Size = new System.Drawing.Size(80, 30);
             this.cancel.TabIndex = 22;
             this.cancel.UseVisualStyleBackColor = false;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
-            // dataGridView
+            // tableDataGridView
             // 
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(21, 128);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(658, 212);
-            this.dataGridView.TabIndex = 23;
+            this.tableDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableDataGridView.Location = new System.Drawing.Point(21, 128);
+            this.tableDataGridView.Name = "tableDataGridView";
+            this.tableDataGridView.Size = new System.Drawing.Size(658, 212);
+            this.tableDataGridView.TabIndex = 23;
             // 
             // ClinicAllInformationWindow
             // 
@@ -95,14 +96,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(709, 388);
-            this.Controls.Add(this.dataGridView);
+            this.Controls.Add(this.tableDataGridView);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.choose);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ClinicAllInformationWindow";
             this.Text = "ClinicAllInformation";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,6 +115,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox choose;
         private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridView tableDataGridView;
     }
 }

@@ -199,6 +199,7 @@
             this.cancel.Size = new System.Drawing.Size(80, 30);
             this.cancel.TabIndex = 21;
             this.cancel.UseVisualStyleBackColor = false;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // seeAllAnimals
             // 
@@ -270,7 +271,7 @@
             this.chooseVet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chooseVet.ForeColor = System.Drawing.SystemColors.WindowText;
             this.chooseVet.FormattingEnabled = true;
-            this.chooseVet.Location = new System.Drawing.Point(71, 117);
+            this.chooseVet.Location = new System.Drawing.Point(70, 117);
             this.chooseVet.Name = "chooseVet";
             this.chooseVet.Size = new System.Drawing.Size(246, 28);
             this.chooseVet.TabIndex = 30;

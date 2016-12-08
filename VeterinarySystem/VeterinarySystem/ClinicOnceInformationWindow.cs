@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -56,11 +57,9 @@ namespace VeterinarySystem
         {
             chooseLabel.Visible = true;
             pCodeLabel.Visible = true;
-            animalType.Visible = true;
             animalComboBox.Visible = true;
             animalsCount.Visible = true;
             pCodeText.Visible = true;
-            started_animalTypeText.Visible = true;
             fName.Visible = true;
             fNameText.Visible = true;
             sName.Visible = true;
@@ -68,6 +67,7 @@ namespace VeterinarySystem
             phone.Visible = true;
             phoneText.Visible = true;
             allOwnerAnimals.Visible = true;
+            count.Visible = true;
         }
 
         private void clearVisible()
@@ -98,14 +98,25 @@ namespace VeterinarySystem
 
         private void SeeAnimals()
         {
-            //using(VeterinaryEntities dataBase = new VeterinaryEntities())
-            //{
-            //    var animals = dataBase.Pets.Select(p => p.Name);
-            //    foreach (var pet in animals)
-            //    {
-            //        animalComboBox.Items.Add(pet);
-            //    }
-            //}
+
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
+            {
+                var pets = (from pet in dataBase.Pets
+                            join own in dataBase.Owners on pet.Owner equals own.PCode
+
+                            select new
+                            {
+                                PName = pet.Name, 
+                                PType = pet.Type,
+                            });
+
+
+                foreach (var pet in pets)
+                {
+                    animalComboBox.Items.Add(pet.PName + ", " + pet.PType.ToLower());
+                }
+
+            }
         }
         private void SeeVets()
         {
@@ -123,7 +134,38 @@ namespace VeterinarySystem
 
         private void animalComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int selected = animalComboBox.SelectedIndex;
 
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
+            {
+                var owners = (from pet in dataBase.Pets
+                            join own in dataBase.Owners on pet.Owner equals own.PCode
+
+                            select new
+                            {
+                                FName = own.Name,
+                                SName = own.SurName,
+                                Phone = own.Phone,
+                                PCode = own.PCode,
+                                Pets = dataBase.Pets.Where(p => p.Owner.Equals(own.PCode)).Count()
+                            });
+
+                int i = 0;
+                foreach (var owner in owners)
+                {
+                    if(i == selected)
+                    {
+                        Trace.WriteLine(owner.Pets);
+
+                        pCodeText.Text = owner.PCode;
+                        fNameText.Text = owner.FName;
+                        sNameText.Text = owner.SName;
+                        phoneText.Text = owner.Phone;
+                        count.Text = owner.Pets.ToString();
+                    }
+                    i++;
+                }
+            }
         }
 
         private void chooseVet_SelectedIndexChanged(object sender, EventArgs e)
@@ -150,6 +192,11 @@ namespace VeterinarySystem
                     }
                 }
             }
+        }
+
+        private void cancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
