@@ -21,3 +21,4 @@ C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\E
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\EntityFramework.xml
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.CliniAllSpecificWindow.resources

@@ -75,6 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CliniAllSpecificWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CliniAllSpecificWindow.Designer.cs">
+      <DependentUpon>CliniAllSpecificWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Clinic.cs">
       <DependentUpon>VeterinaryModel.tt</DependentUpon>
     </Compile>
@@ -161,6 +167,9 @@
     <Compile Include="VetWindow.Designer.cs">
       <DependentUpon>VetWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CliniAllSpecificWindow.resx">
+      <DependentUpon>CliniAllSpecificWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClinicWindow.resx">
       <DependentUpon>ClinicWindow.cs</DependentUpon>
     </EmbeddedResource>

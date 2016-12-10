@@ -211,6 +211,7 @@
             this.seeAllAnimals.Text = "See all treating animals info";
             this.seeAllAnimals.UseVisualStyleBackColor = true;
             this.seeAllAnimals.Visible = false;
+            this.seeAllAnimals.Click += new System.EventHandler(this.seeAllAnimals_Click);
             // 
             // chooseLabel
             // 
@@ -258,13 +259,14 @@
             // allOwnerAnimals
             // 
             this.allOwnerAnimals.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.allOwnerAnimals.Location = new System.Drawing.Point(70, 329);
+            this.allOwnerAnimals.Location = new System.Drawing.Point(71, 329);
             this.allOwnerAnimals.Name = "allOwnerAnimals";
             this.allOwnerAnimals.Size = new System.Drawing.Size(246, 30);
             this.allOwnerAnimals.TabIndex = 29;
             this.allOwnerAnimals.Text = "See all owner\'s animals\' info";
             this.allOwnerAnimals.UseVisualStyleBackColor = true;
             this.allOwnerAnimals.Visible = false;
+            this.allOwnerAnimals.Click += new System.EventHandler(this.allOwnerAnimals_Click);
             // 
             // chooseVet
             // 

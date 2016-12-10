@@ -12,12 +12,15 @@ namespace VeterinarySystem
         public LogInWindow()
         {
             InitializeComponent();
+            name.Text = null;
+            pass.Text = null;
         }
 
         private void LogInWindow_Load(object sender, EventArgs e)
         {
             name.Leave += GetUsername;
             pass.Leave += GetPassword;
+
         }
 
         private void GetUsername(object sender, EventArgs e)
@@ -60,7 +63,12 @@ namespace VeterinarySystem
                 {
                     Hide();
                     if (owner.ShowDialog() == DialogResult.OK)
+                    {
                         Show();
+                        name.Text = null;
+                        pass.Text = null;
+                    }
+
                 }
                 
 
@@ -71,7 +79,11 @@ namespace VeterinarySystem
                 {
                     Hide();
                     if (vet.ShowDialog() == DialogResult.OK)
+                    {
                         Show();
+                        name.Text = null;
+                        pass.Text = null;
+                    }
                 }
             }
             else if(FindUser("Name", "City", dataSet.Tables["Clinic"].Rows))
@@ -80,7 +92,11 @@ namespace VeterinarySystem
                 {
                     Hide();
                     if (clinic.ShowDialog() == DialogResult.OK)
+                    {
                         Show();
+                        name.Text = null;
+                        pass.Text = null;
+                    }
                 }
 
             }
@@ -111,7 +127,6 @@ namespace VeterinarySystem
             SignUpWindow signUp = new SignUpWindow();
             signUp.Show();
         }
-
 
     }
 }

@@ -8,6 +8,7 @@ namespace VeterinarySystem
 {
     public partial class ClinicOnceInformationWindow : Form
     {
+        private string _pCode;
         private string _clinic;
         public ClinicOnceInformationWindow(string clinic)
         {
@@ -102,18 +103,20 @@ namespace VeterinarySystem
             using (VeterinaryEntities dataBase = new VeterinaryEntities())
             {
                 var pets = (from pet in dataBase.Pets
-                            join own in dataBase.Owners on pet.Owner equals own.PCode
-
+                            join owner in dataBase.Owners on pet.Owner equals owner.PCode
+                            join treat in dataBase.Treatments on pet.Id equals treat.Animal
+                            join vet in dataBase.Vets on treat.Vet equals vet.PCode
                             select new
                             {
-                                PName = pet.Name, 
+                                PName = pet.Name,
                                 PType = pet.Type,
-                            });
-
+                                Clinic = vet.Clinic
+                            }).Distinct();
 
                 foreach (var pet in pets)
                 {
-                    animalComboBox.Items.Add(pet.PName + ", " + pet.PType.ToLower());
+                    if(pet.Clinic.Equals(_clinic))
+                        animalComboBox.Items.Add(pet.PName + ", " + pet.PType.ToLower());
                 }
 
             }
@@ -139,31 +142,38 @@ namespace VeterinarySystem
             using (VeterinaryEntities dataBase = new VeterinaryEntities())
             {
                 var owners = (from pet in dataBase.Pets
-                            join own in dataBase.Owners on pet.Owner equals own.PCode
-
+                            join owner in dataBase.Owners on pet.Owner equals owner.PCode
+                            join treat in dataBase.Treatments on pet.Id equals treat.Animal
+                            join vet in dataBase.Vets on treat.Vet equals vet.PCode
                             select new
                             {
-                                FName = own.Name,
-                                SName = own.SurName,
-                                Phone = own.Phone,
-                                PCode = own.PCode,
-                                Pets = dataBase.Pets.Where(p => p.Owner.Equals(own.PCode)).Count()
-                            });
+                                FName = owner.Name,
+                                SName = owner.SurName,
+                                Phone = owner.Phone,
+                                PCode = owner.PCode,
+                                Pets = dataBase.Pets.Where(p => p.Owner.Equals(owner.PCode)).Count(),
+                                PName = pet.Name,
+                                PType = pet.Type,
+                                Clinic = vet.Clinic
+                            }).Distinct();
 
                 int i = 0;
                 foreach (var owner in owners)
                 {
-                    if(i == selected)
+                    if (owner.Clinic.Equals(_clinic))
                     {
-                        Trace.WriteLine(owner.Pets);
-
-                        pCodeText.Text = owner.PCode;
-                        fNameText.Text = owner.FName;
-                        sNameText.Text = owner.SName;
-                        phoneText.Text = owner.Phone;
-                        count.Text = owner.Pets.ToString();
+                        if (i == selected)
+                        {
+                            Trace.WriteLine(owner.Pets);
+                            _pCode = owner.PCode;
+                            pCodeText.Text = owner.PCode;
+                            fNameText.Text = owner.FName;
+                            sNameText.Text = owner.SName;
+                            phoneText.Text = owner.Phone;
+                            count.Text = owner.Pets.ToString();
+                        }
+                        i++;
                     }
-                    i++;
                 }
             }
         }
@@ -188,6 +198,7 @@ namespace VeterinarySystem
                         phoneText.Text = vet.Phone;
                         started_animalTypeText.Text = vet.Started.ToString();
                         pCodeText.Text = vet.PCode;
+                        _pCode = vet.PCode;
                         count.Text = pets.ToString();
                     }
                 }
@@ -197,6 +208,26 @@ namespace VeterinarySystem
         private void cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void allOwnerAnimals_Click(object sender, EventArgs e)
+        {
+            CliniAllSpecificWindow info = new CliniAllSpecificWindow(_clinic, _pCode, "Owner");
+            try
+            {
+                info.Show();
+            }
+            catch (Exception) { }
+        }
+
+        private void seeAllAnimals_Click(object sender, EventArgs e)
+        {
+            CliniAllSpecificWindow info = new CliniAllSpecificWindow(_clinic, _pCode, "Vet");
+            try
+            {
+                info.Show();
+            }
+            catch (Exception) { }
         }
     }
 }
