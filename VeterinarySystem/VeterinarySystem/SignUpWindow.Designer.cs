@@ -294,7 +294,7 @@
             this.clinicLabel.AutoSize = true;
             this.clinicLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.clinicLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clinicLabel.Location = new System.Drawing.Point(125, 291);
+            this.clinicLabel.Location = new System.Drawing.Point(127, 291);
             this.clinicLabel.Name = "clinicLabel";
             this.clinicLabel.Size = new System.Drawing.Size(185, 15);
             this.clinicLabel.TabIndex = 23;
@@ -320,7 +320,7 @@
             this.clinic2Label.AutoSize = true;
             this.clinic2Label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.clinic2Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clinic2Label.Location = new System.Drawing.Point(125, 306);
+            this.clinic2Label.Location = new System.Drawing.Point(127, 306);
             this.clinic2Label.Name = "clinic2Label";
             this.clinic2Label.Size = new System.Drawing.Size(136, 15);
             this.clinic2Label.TabIndex = 25;

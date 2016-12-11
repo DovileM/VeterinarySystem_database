@@ -51,8 +51,19 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +75,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CliniAllSpecificWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CliniAllSpecificWindow.Designer.cs">
+      <DependentUpon>CliniAllSpecificWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clinic.cs">
+      <DependentUpon>VeterinaryModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ClinicWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +107,36 @@
     </Compile>
     <Compile Include="ClinicNewVetWindow.Designer.cs">
       <DependentUpon>ClinicNewVetWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Owner.cs">
+      <DependentUpon>VeterinaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OwnerRegistPetWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerRegistPetWindow.Designer.cs">
+      <DependentUpon>OwnerRegistPetWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OwnerClinicWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerClinicWindow.Designer.cs">
+      <DependentUpon>OwnerClinicWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OwnerNewPetWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerNewPetWindow.Designer.cs">
+      <DependentUpon>OwnerNewPetWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pet.cs">
+      <DependentUpon>VeterinaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PetUpdateWindowcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PetUpdateWindowcs.Designer.cs">
+      <DependentUpon>PetUpdateWindowcs.cs</DependentUpon>
     </Compile>
     <Compile Include="ProfileWindow.cs">
       <SubType>Form</SubType>
@@ -114,12 +164,42 @@
     <Compile Include="SignUpWindow.Designer.cs">
       <DependentUpon>SignUpWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Treatment.cs">
+      <DependentUpon>VeterinaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateDeleteWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateDeleteWindow.Designer.cs">
+      <DependentUpon>UpdateDeleteWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vet.cs">
+      <DependentUpon>VeterinaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VeterinaryModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VeterinaryModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VeterinaryModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VeterinaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VeterinaryModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VeterinaryModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="VetWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="VetWindow.Designer.cs">
       <DependentUpon>VetWindow.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CliniAllSpecificWindow.resx">
+      <DependentUpon>CliniAllSpecificWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClinicWindow.resx">
       <DependentUpon>ClinicWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +211,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClinicNewVetWindow.resx">
       <DependentUpon>ClinicNewVetWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerRegistPetWindow.resx">
+      <DependentUpon>OwnerRegistPetWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerClinicWindow.resx">
+      <DependentUpon>OwnerClinicWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerNewPetWindow.resx">
+      <DependentUpon>OwnerNewPetWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PetUpdateWindowcs.resx">
+      <DependentUpon>PetUpdateWindowcs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProfileWindow.resx">
       <DependentUpon>ProfileWindow.cs</DependentUpon>
@@ -153,9 +245,14 @@
     <EmbeddedResource Include="SignUpWindow.resx">
       <DependentUpon>SignUpWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UpdateDeleteWindow.resx">
+      <DependentUpon>UpdateDeleteWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VetWindow.resx">
       <DependentUpon>VetWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -165,9 +262,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
+    <EntityDeploy Include="VeterinaryModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VeterinaryModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="VeterinaryModel.edmx.diagram">
+      <DependentUpon>VeterinaryModel.edmx</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="DatabaseVeterinary.mdf">
@@ -176,6 +277,16 @@
     <Content Include="DatabaseVeterinary_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>DatabaseVeterinary.mdf</DependentUpon>
+    </Content>
+    <Content Include="VeterinaryModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VeterinaryModel.edmx</DependentUpon>
+      <LastGenOutput>VeterinaryModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="VeterinaryModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VeterinaryModel.edmx</DependentUpon>
+      <LastGenOutput>VeterinaryModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +300,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseVeterinaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clinic">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Street" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="No" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="PCode" />
+    </Key>
+    <Property Name="PCode" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="SurName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Pet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Owner" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Species" Type="nvarchar" MaxLength="50" />
+    <Property Name="Born" Type="date" />
+    <Property Name="Weight" Type="decimal" Precision="3" Scale="3" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Treatment">
+    <Key>
+      <PropertyRef Name="Animal" />
+    </Key>
+    <Property Name="Animal" Type="int" Nullable="false" />
+    <Property Name="Vet" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Start" Type="date" Nullable="false" />
+    <Property Name="End" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vet">
+    <Key>
+      <PropertyRef Name="PCode" />
+    </Key>
+    <Property Name="PCode" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="SurName" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="Clinic" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="StartedAt" Type="date" />
+  </EntityType>
+  <Association Name="PetToOwner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="PCode" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="Owner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TreatmentToPet">
+    <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
+    <End Role="Treatment" Type="Self.Treatment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Pet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Treatment">
+        <PropertyRef Name="Animal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TreatmentToVet">
+    <End Role="Vet" Type="Self.Vet" Multiplicity="1" />
+    <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vet">
+        <PropertyRef Name="PCode" />
+      </Principal>
+      <Dependent Role="Treatment">
+        <PropertyRef Name="Vet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VetToClinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="Vet" Type="Self.Vet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Vet">
+        <PropertyRef Name="Clinic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseVeterinaryModelStoreContainer">
+    <EntitySet Name="Clinic" EntityType="Self.Clinic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Owner" EntityType="Self.Owner" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pet" EntityType="Self.Pet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Treatment" EntityType="Self.Treatment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vet" EntityType="Self.Vet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="PetToOwner" Association="Self.PetToOwner">
+      <End Role="Owner" EntitySet="Owner" />
+      <End Role="Pet" EntitySet="Pet" />
+    </AssociationSet>
+    <AssociationSet Name="TreatmentToPet" Association="Self.TreatmentToPet">
+      <End Role="Pet" EntitySet="Pet" />
+      <End Role="Treatment" EntitySet="Treatment" />
+    </AssociationSet>
+    <AssociationSet Name="TreatmentToVet" Association="Self.TreatmentToVet">
+      <End Role="Vet" EntitySet="Vet" />
+      <End Role="Treatment" EntitySet="Treatment" />
+    </AssociationSet>
+    <AssociationSet Name="VetToClinic" Association="Self.VetToClinic">
+      <End Role="Clinic" EntitySet="Clinic" />
+      <End Role="Vet" EntitySet="Vet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

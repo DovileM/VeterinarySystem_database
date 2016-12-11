@@ -31,8 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClinicOnceInformationWindow));
             this.label1 = new System.Windows.Forms.Label();
             this.choose = new System.Windows.Forms.ComboBox();
-            this.pCodeTextBox = new System.Windows.Forms.TextBox();
-            this.pCode = new System.Windows.Forms.Label();
+            this.chooseVetLabel = new System.Windows.Forms.Label();
             this.fName = new System.Windows.Forms.Label();
             this.sName = new System.Windows.Forms.Label();
             this.phone = new System.Windows.Forms.Label();
@@ -41,15 +40,19 @@
             this.fNameText = new System.Windows.Forms.Label();
             this.sNameText = new System.Windows.Forms.Label();
             this.phoneText = new System.Windows.Forms.Label();
-            this.startedAtText = new System.Windows.Forms.Label();
-            this.animalText = new System.Windows.Forms.Label();
+            this.pCodeText = new System.Windows.Forms.Label();
+            this.started_animalTypeText = new System.Windows.Forms.Label();
             this.cancel = new System.Windows.Forms.Button();
             this.seeAllAnimals = new System.Windows.Forms.Button();
             this.chooseLabel = new System.Windows.Forms.Label();
-            this.pCodeLabel = new System.Windows.Forms.Label();
-            this.gifLabel = new System.Windows.Forms.Label();
             this.animalComboBox = new System.Windows.Forms.ComboBox();
             this.backLabel = new System.Windows.Forms.Label();
+            this.animalsCount = new System.Windows.Forms.Label();
+            this.allOwnerAnimals = new System.Windows.Forms.Button();
+            this.chooseVet = new System.Windows.Forms.ComboBox();
+            this.animalType = new System.Windows.Forms.Label();
+            this.pCodeLabel = new System.Windows.Forms.Label();
+            this.count = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -70,30 +73,21 @@
             "Owner"});
             this.choose.Location = new System.Drawing.Point(70, 67);
             this.choose.Name = "choose";
-            this.choose.Size = new System.Drawing.Size(217, 28);
+            this.choose.Size = new System.Drawing.Size(247, 28);
             this.choose.TabIndex = 1;
             this.choose.Text = "Choose information type";
             this.choose.SelectedIndexChanged += new System.EventHandler(this.choose_SelectedIndexChanged);
             // 
-            // pCodeTextBox
+            // chooseVetLabel
             // 
-            this.pCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pCodeTextBox.Location = new System.Drawing.Point(70, 117);
-            this.pCodeTextBox.Name = "pCodeTextBox";
-            this.pCodeTextBox.Size = new System.Drawing.Size(217, 26);
-            this.pCodeTextBox.TabIndex = 3;
-            this.pCodeTextBox.Visible = false;
-            // 
-            // pCode
-            // 
-            this.pCode.AutoSize = true;
-            this.pCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pCode.Location = new System.Drawing.Point(67, 98);
-            this.pCode.Name = "pCode";
-            this.pCode.Size = new System.Drawing.Size(147, 16);
-            this.pCode.TabIndex = 4;
-            this.pCode.Text = "Eneter \'Personal code\':";
-            this.pCode.Visible = false;
+            this.chooseVetLabel.AutoSize = true;
+            this.chooseVetLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chooseVetLabel.Location = new System.Drawing.Point(67, 98);
+            this.chooseVetLabel.Name = "chooseVetLabel";
+            this.chooseVetLabel.Size = new System.Drawing.Size(90, 16);
+            this.chooseVetLabel.TabIndex = 4;
+            this.chooseVetLabel.Text = "Choose a vet:";
+            this.chooseVetLabel.Visible = false;
             // 
             // fName
             // 
@@ -105,7 +99,6 @@
             this.fName.TabIndex = 5;
             this.fName.Text = "First name:";
             this.fName.Visible = false;
-            this.fName.Click += new System.EventHandler(this.label2_Click);
             // 
             // sName
             // 
@@ -117,7 +110,6 @@
             this.sName.TabIndex = 6;
             this.sName.Text = "Second name:";
             this.sName.Visible = false;
-            this.sName.Click += new System.EventHandler(this.label4_Click);
             // 
             // phone
             // 
@@ -129,13 +121,12 @@
             this.phone.TabIndex = 11;
             this.phone.Text = "Phone No.:";
             this.phone.Visible = false;
-            this.phone.Click += new System.EventHandler(this.label5_Click);
             // 
             // startedAt
             // 
             this.startedAt.AutoSize = true;
             this.startedAt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startedAt.Location = new System.Drawing.Point(67, 235);
+            this.startedAt.Location = new System.Drawing.Point(68, 290);
             this.startedAt.Name = "startedAt";
             this.startedAt.Size = new System.Drawing.Size(99, 16);
             this.startedAt.TabIndex = 12;
@@ -152,143 +143,194 @@
             this.animals.TabIndex = 13;
             this.animals.Text = "Treating animals:";
             this.animals.Visible = false;
-            this.animals.Click += new System.EventHandler(this.label7_Click);
             // 
             // fNameText
             // 
             this.fNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fNameText.Location = new System.Drawing.Point(182, 156);
             this.fNameText.Name = "fNameText";
-            this.fNameText.Size = new System.Drawing.Size(101, 19);
+            this.fNameText.Size = new System.Drawing.Size(134, 19);
             this.fNameText.TabIndex = 15;
             this.fNameText.Visible = false;
-            this.fNameText.Click += new System.EventHandler(this.label9_Click);
             // 
             // sNameText
             // 
             this.sNameText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sNameText.Location = new System.Drawing.Point(182, 182);
             this.sNameText.Name = "sNameText";
-            this.sNameText.Size = new System.Drawing.Size(105, 19);
+            this.sNameText.Size = new System.Drawing.Size(134, 19);
             this.sNameText.TabIndex = 16;
             this.sNameText.Visible = false;
-            this.sNameText.Click += new System.EventHandler(this.label10_Click);
             // 
             // phoneText
             // 
             this.phoneText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phoneText.Location = new System.Drawing.Point(182, 207);
             this.phoneText.Name = "phoneText";
-            this.phoneText.Size = new System.Drawing.Size(105, 19);
+            this.phoneText.Size = new System.Drawing.Size(134, 19);
             this.phoneText.TabIndex = 17;
             this.phoneText.Visible = false;
             // 
-            // startedAtText
+            // pCodeText
             // 
-            this.startedAtText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startedAtText.Location = new System.Drawing.Point(182, 232);
-            this.startedAtText.Name = "startedAtText";
-            this.startedAtText.Size = new System.Drawing.Size(105, 19);
-            this.startedAtText.TabIndex = 18;
-            this.startedAtText.Visible = false;
+            this.pCodeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pCodeText.Location = new System.Drawing.Point(182, 232);
+            this.pCodeText.Name = "pCodeText";
+            this.pCodeText.Size = new System.Drawing.Size(134, 19);
+            this.pCodeText.TabIndex = 18;
+            this.pCodeText.Visible = false;
             // 
-            // animalText
+            // started_animalTypeText
             // 
-            this.animalText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.animalText.Location = new System.Drawing.Point(182, 258);
-            this.animalText.Name = "animalText";
-            this.animalText.Size = new System.Drawing.Size(105, 19);
-            this.animalText.TabIndex = 19;
-            this.animalText.Visible = false;
+            this.started_animalTypeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.started_animalTypeText.Location = new System.Drawing.Point(182, 287);
+            this.started_animalTypeText.Name = "started_animalTypeText";
+            this.started_animalTypeText.Size = new System.Drawing.Size(135, 19);
+            this.started_animalTypeText.TabIndex = 19;
+            this.started_animalTypeText.Visible = false;
             // 
             // cancel
             // 
             this.cancel.BackColor = System.Drawing.SystemColors.Control;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.Image = ((System.Drawing.Image)(resources.GetObject("cancel.Image")));
-            this.cancel.Location = new System.Drawing.Point(134, 361);
+            this.cancel.Location = new System.Drawing.Point(153, 376);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(80, 30);
             this.cancel.TabIndex = 21;
             this.cancel.UseVisualStyleBackColor = false;
+            this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
             // seeAllAnimals
             // 
             this.seeAllAnimals.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seeAllAnimals.Location = new System.Drawing.Point(70, 296);
+            this.seeAllAnimals.Location = new System.Drawing.Point(70, 329);
             this.seeAllAnimals.Name = "seeAllAnimals";
-            this.seeAllAnimals.Size = new System.Drawing.Size(217, 30);
+            this.seeAllAnimals.Size = new System.Drawing.Size(246, 30);
             this.seeAllAnimals.TabIndex = 22;
             this.seeAllAnimals.Text = "See all treating animals info";
             this.seeAllAnimals.UseVisualStyleBackColor = true;
             this.seeAllAnimals.Visible = false;
+            this.seeAllAnimals.Click += new System.EventHandler(this.seeAllAnimals_Click);
             // 
             // chooseLabel
             // 
             this.chooseLabel.AutoSize = true;
             this.chooseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chooseLabel.Location = new System.Drawing.Point(67, 98);
+            this.chooseLabel.Location = new System.Drawing.Point(68, 98);
             this.chooseLabel.Name = "chooseLabel";
             this.chooseLabel.Size = new System.Drawing.Size(122, 16);
             this.chooseLabel.TabIndex = 23;
             this.chooseLabel.Text = "Choose the animal:";
             this.chooseLabel.Visible = false;
             // 
-            // pCodeLabel
-            // 
-            this.pCodeLabel.AutoSize = true;
-            this.pCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pCodeLabel.Location = new System.Drawing.Point(67, 235);
-            this.pCodeLabel.Name = "pCodeLabel";
-            this.pCodeLabel.Size = new System.Drawing.Size(99, 16);
-            this.pCodeLabel.TabIndex = 24;
-            this.pCodeLabel.Text = "Personal code:";
-            this.pCodeLabel.Visible = false;
-            // 
-            // gifLabel
-            // 
-            this.gifLabel.Image = ((System.Drawing.Image)(resources.GetObject("gifLabel.Image")));
-            this.gifLabel.Location = new System.Drawing.Point(105, 263);
-            this.gifLabel.Name = "gifLabel";
-            this.gifLabel.Size = new System.Drawing.Size(134, 77);
-            this.gifLabel.TabIndex = 25;
-            this.gifLabel.Visible = false;
-            // 
             // animalComboBox
             // 
             this.animalComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.animalComboBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.animalComboBox.FormattingEnabled = true;
-            this.animalComboBox.Location = new System.Drawing.Point(70, 115);
+            this.animalComboBox.Location = new System.Drawing.Point(71, 117);
             this.animalComboBox.Name = "animalComboBox";
-            this.animalComboBox.Size = new System.Drawing.Size(217, 28);
+            this.animalComboBox.Size = new System.Drawing.Size(246, 28);
             this.animalComboBox.TabIndex = 26;
             this.animalComboBox.Text = "Choose the animal";
             this.animalComboBox.Visible = false;
+            this.animalComboBox.SelectedIndexChanged += new System.EventHandler(this.animalComboBox_SelectedIndexChanged);
             // 
             // backLabel
             // 
             this.backLabel.Image = ((System.Drawing.Image)(resources.GetObject("backLabel.Image")));
-            this.backLabel.Location = new System.Drawing.Point(12, 100);
+            this.backLabel.Location = new System.Drawing.Point(12, 98);
             this.backLabel.Name = "backLabel";
-            this.backLabel.Size = new System.Drawing.Size(329, 258);
+            this.backLabel.Size = new System.Drawing.Size(329, 259);
             this.backLabel.TabIndex = 27;
             // 
-            // ClinicInformation
+            // animalsCount
+            // 
+            this.animalsCount.AutoSize = true;
+            this.animalsCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.animalsCount.Location = new System.Drawing.Point(67, 261);
+            this.animalsCount.Name = "animalsCount";
+            this.animalsCount.Size = new System.Drawing.Size(59, 16);
+            this.animalsCount.TabIndex = 28;
+            this.animalsCount.Text = "Animals:";
+            this.animalsCount.Visible = false;
+            // 
+            // allOwnerAnimals
+            // 
+            this.allOwnerAnimals.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.allOwnerAnimals.Location = new System.Drawing.Point(71, 329);
+            this.allOwnerAnimals.Name = "allOwnerAnimals";
+            this.allOwnerAnimals.Size = new System.Drawing.Size(246, 30);
+            this.allOwnerAnimals.TabIndex = 29;
+            this.allOwnerAnimals.Text = "See all owner\'s animals\' info";
+            this.allOwnerAnimals.UseVisualStyleBackColor = true;
+            this.allOwnerAnimals.Visible = false;
+            this.allOwnerAnimals.Click += new System.EventHandler(this.allOwnerAnimals_Click);
+            // 
+            // chooseVet
+            // 
+            this.chooseVet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chooseVet.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.chooseVet.FormattingEnabled = true;
+            this.chooseVet.Location = new System.Drawing.Point(70, 117);
+            this.chooseVet.Name = "chooseVet";
+            this.chooseVet.Size = new System.Drawing.Size(246, 28);
+            this.chooseVet.TabIndex = 30;
+            this.chooseVet.Text = "Choose a vet";
+            this.chooseVet.Visible = false;
+            this.chooseVet.SelectedIndexChanged += new System.EventHandler(this.chooseVet_SelectedIndexChanged);
+            // 
+            // animalType
+            // 
+            this.animalType.AutoSize = true;
+            this.animalType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.animalType.Location = new System.Drawing.Point(68, 290);
+            this.animalType.Name = "animalType";
+            this.animalType.Size = new System.Drawing.Size(81, 16);
+            this.animalType.TabIndex = 31;
+            this.animalType.Text = "Animal type:";
+            this.animalType.Visible = false;
+            // 
+            // pCodeLabel
+            // 
+            this.pCodeLabel.AutoSize = true;
+            this.pCodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pCodeLabel.Location = new System.Drawing.Point(68, 235);
+            this.pCodeLabel.Name = "pCodeLabel";
+            this.pCodeLabel.Size = new System.Drawing.Size(99, 16);
+            this.pCodeLabel.TabIndex = 33;
+            this.pCodeLabel.Text = "Personal code:";
+            this.pCodeLabel.Visible = false;
+            // 
+            // count
+            // 
+            this.count.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.count.Location = new System.Drawing.Point(184, 261);
+            this.count.Name = "count";
+            this.count.Size = new System.Drawing.Size(135, 19);
+            this.count.TabIndex = 34;
+            this.count.Visible = false;
+            // 
+            // ClinicOnceInformationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(353, 418);
+            this.ClientSize = new System.Drawing.Size(366, 418);
+            this.Controls.Add(this.count);
+            this.Controls.Add(this.pCodeLabel);
+            this.Controls.Add(this.animalType);
+            this.Controls.Add(this.chooseVet);
+            this.Controls.Add(this.allOwnerAnimals);
+            this.Controls.Add(this.animalsCount);
             this.Controls.Add(this.backLabel);
             this.Controls.Add(this.animalComboBox);
-            this.Controls.Add(this.gifLabel);
-            this.Controls.Add(this.pCodeLabel);
             this.Controls.Add(this.chooseLabel);
             this.Controls.Add(this.seeAllAnimals);
             this.Controls.Add(this.cancel);
-            this.Controls.Add(this.animalText);
-            this.Controls.Add(this.startedAtText);
+            this.Controls.Add(this.started_animalTypeText);
+            this.Controls.Add(this.pCodeText);
             this.Controls.Add(this.phoneText);
             this.Controls.Add(this.sNameText);
             this.Controls.Add(this.fNameText);
@@ -297,13 +339,11 @@
             this.Controls.Add(this.phone);
             this.Controls.Add(this.sName);
             this.Controls.Add(this.fName);
-            this.Controls.Add(this.pCode);
-            this.Controls.Add(this.pCodeTextBox);
+            this.Controls.Add(this.chooseVetLabel);
             this.Controls.Add(this.choose);
             this.Controls.Add(this.label1);
-            this.Name = "ClinicInformation";
+            this.Name = "ClinicOnceInformationWindow";
             this.Text = "ClinicInformation";
-            this.Load += new System.EventHandler(this.ClinicInformation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,8 +353,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox choose;
-        private System.Windows.Forms.TextBox pCodeTextBox;
-        private System.Windows.Forms.Label pCode;
+        private System.Windows.Forms.Label chooseVetLabel;
         private System.Windows.Forms.Label fName;
         private System.Windows.Forms.Label sName;
         private System.Windows.Forms.Label phone;
@@ -323,14 +362,18 @@
         private System.Windows.Forms.Label fNameText;
         private System.Windows.Forms.Label sNameText;
         private System.Windows.Forms.Label phoneText;
-        private System.Windows.Forms.Label startedAtText;
-        private System.Windows.Forms.Label animalText;
+        private System.Windows.Forms.Label pCodeText;
+        private System.Windows.Forms.Label started_animalTypeText;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.Button seeAllAnimals;
         private System.Windows.Forms.Label chooseLabel;
-        private System.Windows.Forms.Label pCodeLabel;
-        private System.Windows.Forms.Label gifLabel;
         private System.Windows.Forms.ComboBox animalComboBox;
         private System.Windows.Forms.Label backLabel;
+        private System.Windows.Forms.Label animalsCount;
+        private System.Windows.Forms.Button allOwnerAnimals;
+        private System.Windows.Forms.ComboBox chooseVet;
+        private System.Windows.Forms.Label animalType;
+        private System.Windows.Forms.Label pCodeLabel;
+        private System.Windows.Forms.Label count;
     }
 }

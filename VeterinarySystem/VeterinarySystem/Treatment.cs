@@ -17,7 +17,7 @@ namespace VeterinarySystem
         public int Animal { get; set; }
         public string Vet { get; set; }
         public System.DateTime Start { get; set; }
-        public System.DateTime End { get; set; }
+        public Nullable<System.DateTime> End { get; set; }
     
         public virtual Pet Pet { get; set; }
         public virtual Vet Vet1 { get; set; }

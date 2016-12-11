@@ -37,7 +37,6 @@
             this.streetLabel = new System.Windows.Forms.Label();
             this.phoneLabel = new System.Windows.Forms.Label();
             this.noLabel = new System.Windows.Forms.Label();
-            this.clinic_pCodeTextBox = new System.Windows.Forms.TextBox();
             this.city_fNameTextBox = new System.Windows.Forms.TextBox();
             this.streetTextBox = new System.Windows.Forms.TextBox();
             this.noTextBox = new System.Windows.Forms.TextBox();
@@ -46,12 +45,14 @@
             this.fNameLabel = new System.Windows.Forms.Label();
             this.sNameLabel = new System.Windows.Forms.Label();
             this.sNameTextBox = new System.Windows.Forms.TextBox();
+            this.clinic_pCode = new System.Windows.Forms.Label();
+            this.delete = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.Location = new System.Drawing.Point(13, 19);
+            this.label1.Location = new System.Drawing.Point(13, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 212);
             this.label1.TabIndex = 0;
@@ -61,18 +62,19 @@
             this.ok.BackColor = System.Drawing.SystemColors.Control;
             this.ok.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ok.Image = ((System.Drawing.Image)(resources.GetObject("ok.Image")));
-            this.ok.Location = new System.Drawing.Point(168, 229);
+            this.ok.Location = new System.Drawing.Point(221, 209);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(80, 30);
             this.ok.TabIndex = 13;
             this.ok.UseVisualStyleBackColor = false;
+            this.ok.Click += new System.EventHandler(this.ok_Click);
             // 
             // cancel
             // 
             this.cancel.BackColor = System.Drawing.SystemColors.Control;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.Image = ((System.Drawing.Image)(resources.GetObject("cancel.Image")));
-            this.cancel.Location = new System.Drawing.Point(288, 229);
+            this.cancel.Location = new System.Drawing.Point(340, 209);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(80, 30);
             this.cancel.TabIndex = 14;
@@ -130,27 +132,19 @@
             this.noLabel.AutoSize = true;
             this.noLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.noLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noLabel.Location = new System.Drawing.Point(332, 130);
+            this.noLabel.Location = new System.Drawing.Point(397, 130);
             this.noLabel.Name = "noLabel";
             this.noLabel.Size = new System.Drawing.Size(36, 18);
             this.noLabel.TabIndex = 26;
             this.noLabel.Text = "No.:";
             this.noLabel.Visible = false;
             // 
-            // clinic_pCodeTextBox
-            // 
-            this.clinic_pCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clinic_pCodeTextBox.Location = new System.Drawing.Point(252, 58);
-            this.clinic_pCodeTextBox.Name = "clinic_pCodeTextBox";
-            this.clinic_pCodeTextBox.Size = new System.Drawing.Size(157, 26);
-            this.clinic_pCodeTextBox.TabIndex = 27;
-            // 
             // city_fNameTextBox
             // 
             this.city_fNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.city_fNameTextBox.Location = new System.Drawing.Point(252, 90);
             this.city_fNameTextBox.Name = "city_fNameTextBox";
-            this.city_fNameTextBox.Size = new System.Drawing.Size(157, 26);
+            this.city_fNameTextBox.Size = new System.Drawing.Size(238, 26);
             this.city_fNameTextBox.TabIndex = 28;
             // 
             // streetTextBox
@@ -158,15 +152,15 @@
             this.streetTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.streetTextBox.Location = new System.Drawing.Point(252, 122);
             this.streetTextBox.Name = "streetTextBox";
-            this.streetTextBox.Size = new System.Drawing.Size(74, 26);
+            this.streetTextBox.Size = new System.Drawing.Size(139, 26);
             this.streetTextBox.TabIndex = 29;
             // 
             // noTextBox
             // 
             this.noTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noTextBox.Location = new System.Drawing.Point(370, 122);
+            this.noTextBox.Location = new System.Drawing.Point(439, 122);
             this.noTextBox.Name = "noTextBox";
-            this.noTextBox.Size = new System.Drawing.Size(39, 26);
+            this.noTextBox.Size = new System.Drawing.Size(51, 26);
             this.noTextBox.TabIndex = 30;
             // 
             // phoneTextBox
@@ -174,7 +168,7 @@
             this.phoneTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phoneTextBox.Location = new System.Drawing.Point(252, 151);
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(157, 26);
+            this.phoneTextBox.Size = new System.Drawing.Size(238, 26);
             this.phoneTextBox.TabIndex = 31;
             // 
             // pCodeLabel
@@ -215,15 +209,36 @@
             this.sNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sNameTextBox.Location = new System.Drawing.Point(252, 122);
             this.sNameTextBox.Name = "sNameTextBox";
-            this.sNameTextBox.Size = new System.Drawing.Size(157, 26);
+            this.sNameTextBox.Size = new System.Drawing.Size(238, 26);
             this.sNameTextBox.TabIndex = 35;
+            // 
+            // clinic_pCode
+            // 
+            this.clinic_pCode.AutoSize = true;
+            this.clinic_pCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clinic_pCode.Location = new System.Drawing.Point(254, 58);
+            this.clinic_pCode.Name = "clinic_pCode";
+            this.clinic_pCode.Size = new System.Drawing.Size(47, 25);
+            this.clinic_pCode.TabIndex = 36;
+            this.clinic_pCode.Text = "text";
+            // 
+            // delete
+            // 
+            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
+            this.delete.Location = new System.Drawing.Point(426, 219);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(74, 55);
+            this.delete.TabIndex = 37;
+            this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
             // ProfileWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(421, 292);
+            this.ClientSize = new System.Drawing.Size(502, 292);
+            this.Controls.Add(this.delete);
+            this.Controls.Add(this.clinic_pCode);
             this.Controls.Add(this.sNameTextBox);
             this.Controls.Add(this.sNameLabel);
             this.Controls.Add(this.fNameLabel);
@@ -232,7 +247,6 @@
             this.Controls.Add(this.noTextBox);
             this.Controls.Add(this.streetTextBox);
             this.Controls.Add(this.city_fNameTextBox);
-            this.Controls.Add(this.clinic_pCodeTextBox);
             this.Controls.Add(this.noLabel);
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.streetLabel);
@@ -258,7 +272,6 @@
         private System.Windows.Forms.Label streetLabel;
         private System.Windows.Forms.Label phoneLabel;
         private System.Windows.Forms.Label noLabel;
-        private System.Windows.Forms.TextBox clinic_pCodeTextBox;
         private System.Windows.Forms.TextBox city_fNameTextBox;
         private System.Windows.Forms.TextBox streetTextBox;
         private System.Windows.Forms.TextBox noTextBox;
@@ -267,5 +280,7 @@
         private System.Windows.Forms.Label fNameLabel;
         private System.Windows.Forms.Label sNameLabel;
         private System.Windows.Forms.TextBox sNameTextBox;
+        private System.Windows.Forms.Label clinic_pCode;
+        private System.Windows.Forms.Label delete;
     }
 }

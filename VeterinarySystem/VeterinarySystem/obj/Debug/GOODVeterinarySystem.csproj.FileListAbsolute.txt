@@ -17,3 +17,13 @@ C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\V
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.OwnerWindow.resources
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.SignUpWindow.resources
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.VetWindow.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\EntityFramework.dll
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\EntityFramework.xml
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.ClinicAllSpecificWindow.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.OwnerClinicWindow.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.OwnerNewPetWindow.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.UpdateDeleteWindow.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.PetUpdateWindow.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.OwnerRegistPetWindow.resources

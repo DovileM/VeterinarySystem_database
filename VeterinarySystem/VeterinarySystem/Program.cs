@@ -17,6 +17,8 @@ namespace VeterinarySystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LogInWindow());
+            //Application.Run(new OwnerClinicWindow("Pet","5555"));
+
 
         }
     }

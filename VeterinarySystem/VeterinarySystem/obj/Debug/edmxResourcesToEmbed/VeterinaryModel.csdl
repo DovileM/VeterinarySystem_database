@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseVeterinaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Clinic">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Street" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="No" Type="String" MaxLength="5" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Vets" Relationship="Self.VetToClinic" FromRole="Clinic" ToRole="Vet" />
+  </EntityType>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="PCode" />
+    </Key>
+    <Property Name="PCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SurName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Pets" Relationship="Self.PetToOwner" FromRole="Owner" ToRole="Pet" />
+  </EntityType>
+  <EntityType Name="Pet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Owner" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Species" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Born" Type="DateTime" Precision="0" />
+    <Property Name="Weight" Type="Decimal" Precision="6" Scale="3" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Owner1" Relationship="Self.PetToOwner" FromRole="Pet" ToRole="Owner" />
+    <NavigationProperty Name="Treatments" Relationship="Self.TreatmentToPet" FromRole="Pet" ToRole="Treatment" />
+  </EntityType>
+  <EntityType Name="Treatment">
+    <Key>
+      <PropertyRef Name="Animal" />
+      <PropertyRef Name="Vet" />
+    </Key>
+    <Property Name="Animal" Type="Int32" Nullable="false" />
+    <Property Name="Vet" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Start" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="End" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Pet" Relationship="Self.TreatmentToPet" FromRole="Treatment" ToRole="Pet" />
+    <NavigationProperty Name="Vet1" Relationship="Self.TreatmentToVet" FromRole="Treatment" ToRole="Vet" />
+  </EntityType>
+  <EntityType Name="Vet">
+    <Key>
+      <PropertyRef Name="PCode" />
+    </Key>
+    <Property Name="PCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SurName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Clinic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="StartedAt" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Clinic1" Relationship="Self.VetToClinic" FromRole="Vet" ToRole="Clinic" />
+    <NavigationProperty Name="Treatments" Relationship="Self.TreatmentToVet" FromRole="Vet" ToRole="Treatment" />
+  </EntityType>
+  <Association Name="VetToClinic">
+    <End Role="Clinic" Type="Self.Clinic" Multiplicity="1" />
+    <End Role="Vet" Type="Self.Vet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clinic">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Vet">
+        <PropertyRef Name="Clinic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PetToOwner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="PCode" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="Owner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TreatmentToPet">
+    <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
+    <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Treatment">
+        <PropertyRef Name="Animal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TreatmentToVet">
+    <End Role="Vet" Type="Self.Vet" Multiplicity="1" />
+    <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vet">
+        <PropertyRef Name="PCode" />
+      </Principal>
+      <Dependent Role="Treatment">
+        <PropertyRef Name="Vet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VeterinaryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clinics" EntityType="Self.Clinic" />
+    <EntitySet Name="Owners" EntityType="Self.Owner" />
+    <EntitySet Name="Pets" EntityType="Self.Pet" />
+    <EntitySet Name="Treatments" EntityType="Self.Treatment" />
+    <EntitySet Name="Vets" EntityType="Self.Vet" />
+    <AssociationSet Name="VetToClinic" Association="Self.VetToClinic">
+      <End Role="Clinic" EntitySet="Clinics" />
+      <End Role="Vet" EntitySet="Vets" />
+    </AssociationSet>
+    <AssociationSet Name="PetToOwner" Association="Self.PetToOwner">
+      <End Role="Owner" EntitySet="Owners" />
+      <End Role="Pet" EntitySet="Pets" />
+    </AssociationSet>
+    <AssociationSet Name="TreatmentToPet" Association="Self.TreatmentToPet">
+      <End Role="Pet" EntitySet="Pets" />
+      <End Role="Treatment" EntitySet="Treatments" />
+    </AssociationSet>
+    <AssociationSet Name="TreatmentToVet" Association="Self.TreatmentToVet">
+      <End Role="Vet" EntitySet="Vets" />
+      <End Role="Treatment" EntitySet="Treatments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
