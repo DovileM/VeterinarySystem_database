@@ -83,8 +83,9 @@
             this.seePetInfo.Name = "seePetInfo";
             this.seePetInfo.Size = new System.Drawing.Size(178, 27);
             this.seePetInfo.TabIndex = 10;
-            this.seePetInfo.Text = "Pet information";
+            this.seePetInfo.Text = "Pets\' information";
             this.seePetInfo.UseVisualStyleBackColor = true;
+            this.seePetInfo.Click += new System.EventHandler(this.seePetInfo_Click);
             // 
             // seeVetInfo
             // 
@@ -93,7 +94,7 @@
             this.seeVetInfo.Name = "seeVetInfo";
             this.seeVetInfo.Size = new System.Drawing.Size(178, 27);
             this.seeVetInfo.TabIndex = 11;
-            this.seeVetInfo.Text = "Vet information";
+            this.seeVetInfo.Text = "Vet\'s information";
             this.seeVetInfo.UseVisualStyleBackColor = true;
             // 
             // seeClinicInfo
@@ -105,6 +106,7 @@
             this.seeClinicInfo.TabIndex = 12;
             this.seeClinicInfo.Text = "Clinic information";
             this.seeClinicInfo.UseVisualStyleBackColor = true;
+            this.seeClinicInfo.Click += new System.EventHandler(this.seeClinicInfo_Click);
             // 
             // insertNewPet
             // 
@@ -115,7 +117,7 @@
             this.insertNewPet.TabIndex = 13;
             this.insertNewPet.Text = "New pet";
             this.insertNewPet.UseVisualStyleBackColor = true;
-            this.insertNewPet.Click += new System.EventHandler(this.button6_Click);
+            this.insertNewPet.Click += new System.EventHandler(this.insertNewPet_Click);
             // 
             // OwnerWindow
             // 

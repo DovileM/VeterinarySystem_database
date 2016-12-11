@@ -108,6 +108,7 @@ namespace VeterinarySystem
                     Trace.WriteLine(item.ToString());
                     clinic_pCode.Text = item.PCode.ToString();
                     city_fNameTextBox.Text = item.Name.ToString();
+                    sNameTextBox.Text = item.SurName.ToString();
                     streetTextBox.Text = item.SurName.ToString();
                     phoneTextBox.Text = item.Phone.ToString();
                 }

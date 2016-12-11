@@ -1,6 +1,6 @@
 ﻿namespace VeterinarySystem
 {
-    partial class CliniAllSpecificWindow
+    partial class ClinicAllSpecificWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CliniAllSpecificWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClinicAllSpecificWindow));
             this.label = new System.Windows.Forms.Label();
             this.cancel = new System.Windows.Forms.Button();
             this.tableDataGridView = new System.Windows.Forms.DataGridView();
@@ -39,11 +39,11 @@
             // 
             this.label.AutoSize = true;
             this.label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.Location = new System.Drawing.Point(157, 24);
+            this.label.Location = new System.Drawing.Point(198, 23);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(60, 24);
+            this.label.Size = new System.Drawing.Size(39, 24);
             this.label.TabIndex = 0;
-            this.label.Text = "label1";
+            this.label.Text = "text";
             // 
             // cancel
             // 
@@ -65,7 +65,7 @@
             this.tableDataGridView.Size = new System.Drawing.Size(552, 299);
             this.tableDataGridView.TabIndex = 24;
             // 
-            // CliniAllSpecificWindow
+            // ClinicAllSpecificWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -74,7 +74,7 @@
             this.Controls.Add(this.tableDataGridView);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.label);
-            this.Name = "CliniAllSpecificWindow";
+            this.Name = "ClinicAllSpecificWindow";
             this.Text = "CliniAllSpecificWindow";
             ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).EndInit();
             this.ResumeLayout(false);

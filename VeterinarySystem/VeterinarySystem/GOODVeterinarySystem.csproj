@@ -111,8 +111,26 @@
     <Compile Include="Owner.cs">
       <DependentUpon>VeterinaryModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="OwnerClinicWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerClinicWindow.Designer.cs">
+      <DependentUpon>OwnerClinicWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OwnerNewPetWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerNewPetWindow.Designer.cs">
+      <DependentUpon>OwnerNewPetWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pet.cs">
       <DependentUpon>VeterinaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PetUpdateWindowcs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PetUpdateWindowcs.Designer.cs">
+      <DependentUpon>PetUpdateWindowcs.cs</DependentUpon>
     </Compile>
     <Compile Include="ProfileWindow.cs">
       <SubType>Form</SubType>
@@ -142,6 +160,12 @@
     </Compile>
     <Compile Include="Treatment.cs">
       <DependentUpon>VeterinaryModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateDeleteWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateDeleteWindow.Designer.cs">
+      <DependentUpon>UpdateDeleteWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Vet.cs">
       <DependentUpon>VeterinaryModel.tt</DependentUpon>
@@ -182,6 +206,15 @@
     <EmbeddedResource Include="ClinicNewVetWindow.resx">
       <DependentUpon>ClinicNewVetWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OwnerClinicWindow.resx">
+      <DependentUpon>OwnerClinicWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerNewPetWindow.resx">
+      <DependentUpon>OwnerNewPetWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PetUpdateWindowcs.resx">
+      <DependentUpon>PetUpdateWindowcs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProfileWindow.resx">
       <DependentUpon>ProfileWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +235,9 @@
     </Compile>
     <EmbeddedResource Include="SignUpWindow.resx">
       <DependentUpon>SignUpWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateDeleteWindow.resx">
+      <DependentUpon>UpdateDeleteWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VetWindow.resx">
       <DependentUpon>VetWindow.cs</DependentUpon>

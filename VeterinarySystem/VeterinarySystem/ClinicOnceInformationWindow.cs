@@ -212,7 +212,7 @@ namespace VeterinarySystem
 
         private void allOwnerAnimals_Click(object sender, EventArgs e)
         {
-            CliniAllSpecificWindow info = new CliniAllSpecificWindow(_clinic, _pCode, "Owner");
+            ClinicAllSpecificWindow info = new ClinicAllSpecificWindow(_clinic, _pCode, "Owner");
             try
             {
                 info.Show();
@@ -222,7 +222,7 @@ namespace VeterinarySystem
 
         private void seeAllAnimals_Click(object sender, EventArgs e)
         {
-            CliniAllSpecificWindow info = new CliniAllSpecificWindow(_clinic, _pCode, "Vet");
+            ClinicAllSpecificWindow info = new ClinicAllSpecificWindow(_clinic, _pCode, "Vet");
             try
             {
                 info.Show();

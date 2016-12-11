@@ -59,7 +59,7 @@ namespace VeterinarySystem
 
             if(FindUser("Name", "SurName", dataSet.Tables["Owner"].Rows))
             {
-                using(OwnerWindow owner = new OwnerWindow())
+                using(OwnerWindow owner = new OwnerWindow(_username,_password))
                 {
                     Hide();
                     if (owner.ShowDialog() == DialogResult.OK)

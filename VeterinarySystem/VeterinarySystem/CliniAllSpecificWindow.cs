@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace VeterinarySystem
 {
-    public partial class CliniAllSpecificWindow : Form
+    public partial class ClinicAllSpecificWindow : Form
     {
         private string _pCode;
         private string _clinic;
 
-        public CliniAllSpecificWindow(string clinic, string PCode, string type)
+        public ClinicAllSpecificWindow(string clinic, string PCode, string type)
         {
             InitializeComponent();
             _clinic = clinic;
@@ -64,12 +64,15 @@ namespace VeterinarySystem
                 }
                 else
                 {
+                    var ownerInfo = dataBase.Owners.Where(o => _pCode.Equals(o.PCode)).Select(o => new { Name = o.Name, Surname = o.SurName });
+
+                    foreach (var owner in ownerInfo)
+                        label.Text = $"{owner.Name} {owner.Surname}'s all pets' info:";
+
                     int i = 0;
 
                     foreach (var pet in pets)
                     {
-                        Trace.WriteLine("-");
-                        Trace.WriteLine("+");
                         tableDataGridView.Rows.Add();
                         tableDataGridView.Rows[i].Cells[0].Value = pet.Name;
                         tableDataGridView.Rows[i].Cells[1].Value = pet.Type;
@@ -122,7 +125,11 @@ namespace VeterinarySystem
                                 End = treat.End
                             }).OrderBy( p => p.Start);
 
+                var vetInfo = dataBase.Vets.Where(v => _pCode.Equals(v.PCode)).Select(v => new { Name = v.Name, SurName = v.SurName });
+
                 int i = 0;
+                foreach (var vet in vetInfo)
+                    label.Text = $"{vet.Name} {vet.SurName}'s treating pets' info:";
 
                 foreach (var pet in pets)
                 {
