@@ -18,6 +18,8 @@ namespace VeterinarySystem
                 ShowClinicsInformation();
             else if (type.Equals("Pet"))
                 ShowPetsInformation();
+            else if (type.Equals("Vet"))
+                ShowVetsInformation();
         }
 
         private void cancel_Click(object sender, EventArgs e)
@@ -69,7 +71,10 @@ namespace VeterinarySystem
                     tableDataGridView.Rows[i].Cells[1].Value = pet.Type;
                     tableDataGridView.Rows[i].Cells[2].Value = pet.Species;
                     tableDataGridView.Rows[i].Cells[3].Value = pet.Start.ToShortDateString();
-                    tableDataGridView.Rows[i].Cells[4].Value = pet.End.ToShortDateString();
+                    if(string.IsNullOrEmpty(pet.End.Value.ToString()))
+                        tableDataGridView.Rows[i].Cells[4].Value = null;
+                    else
+                        tableDataGridView.Rows[i].Cells[4].Value = pet.End.Value.ToShortDateString();
                     tableDataGridView.Rows[i].Cells[5].Value = pet.Vet;
                     tableDataGridView.Rows[i].Cells[6].Value = pet.Clinic;
                     _petID[i] = pet.Id;
@@ -104,7 +109,7 @@ namespace VeterinarySystem
 
         private void ShowClinicsInformation()
         {
-            label.Text = "All clinics' infromation:";
+            label.Text = "All clinics' information:";
             string[] info = new string[] { "Clinic name", "City", "Adress", "Phone", "Vets" };
 
             tableDataGridView.ColumnCount = info.Length;
@@ -133,6 +138,45 @@ namespace VeterinarySystem
                     tableDataGridView.Rows[i].Cells[2].Value = clinic.Adress;
                     tableDataGridView.Rows[i].Cells[3].Value = clinic.Phone;
                     tableDataGridView.Rows[i].Cells[4].Value = clinic.Vets;
+                    i++;
+                }
+            }
+        }
+
+        private void ShowVetsInformation()
+        {
+            label.Text = $"All clinic:{_pCode} vets' information:";
+            string[] info = new string[] { "Name", "Surname", "Experience", "Phone", "Treated pets" };
+
+            tableDataGridView.ColumnCount = info.Length;
+            for (int i = 0; i < info.Length; i++)
+            {
+                tableDataGridView.Columns[i].Name = info[i];
+            }
+
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
+            {
+                var vets = dataBase.Vets.Where(v => v.Clinic.Equals(_pCode)).Select(v => new
+                {
+                    Name = v.Name,
+                    SurName = v.SurName,
+                    Phone = v.Phone,
+                    Experience = v.StartedAt,
+                    Pets = dataBase.Treatments.Where(s => s.Vet.Equals(v.PCode)).Count()
+                }).OrderBy(v => v.Experience);
+
+                int i = 0;
+                foreach (var vet in vets)
+                {
+                    tableDataGridView.Rows.Add();
+                    tableDataGridView.Rows[i].Cells[0].Value = vet.Name;
+                    tableDataGridView.Rows[i].Cells[1].Value = vet.SurName;
+                    if (string.IsNullOrEmpty(vet.Experience.ToString()))
+                        tableDataGridView.Rows[i].Cells[2].Value = null;
+                    else
+                        tableDataGridView.Rows[i].Cells[2].Value = (DateTime.Today.Year - vet.Experience.Value.Year) + " years"; ;
+                    tableDataGridView.Rows[i].Cells[3].Value = vet.Phone;
+                    tableDataGridView.Rows[i].Cells[4].Value = vet.Pets;
                     i++;
                 }
             }

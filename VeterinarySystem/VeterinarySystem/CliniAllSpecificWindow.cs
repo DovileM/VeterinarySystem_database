@@ -151,7 +151,10 @@ namespace VeterinarySystem
                             tableDataGridView.Rows[i].Cells[5].Value = pet.Weight + " kg.";
                         tableDataGridView.Rows[i].Cells[6].Value = pet.Color;
                         tableDataGridView.Rows[i].Cells[7].Value = pet.Start.Date.ToShortDateString();
-                        tableDataGridView.Rows[i].Cells[8].Value = pet.End.Date.ToShortDateString();
+                        if (string.IsNullOrEmpty(pet.End.Value.ToString()))
+                            tableDataGridView.Rows[i].Cells[5].Value = null;
+                        else
+                            tableDataGridView.Rows[i].Cells[8].Value = pet.End.Value.ToShortDateString();
 
 
                         i++;

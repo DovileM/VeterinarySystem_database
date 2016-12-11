@@ -23,23 +23,24 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="Owner" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Species" Type="nvarchar" MaxLength="50" />
     <Property Name="Born" Type="date" />
-    <Property Name="Weight" Type="decimal" Precision="3" Scale="3" />
+    <Property Name="Weight" Type="decimal" Precision="6" Scale="3" />
     <Property Name="Color" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Treatment">
     <Key>
       <PropertyRef Name="Animal" />
+      <PropertyRef Name="Vet" />
     </Key>
     <Property Name="Animal" Type="int" Nullable="false" />
     <Property Name="Vet" Type="nvarchar" MaxLength="15" Nullable="false" />
     <Property Name="Start" Type="date" Nullable="false" />
-    <Property Name="End" Type="date" Nullable="false" />
+    <Property Name="End" Type="date" />
   </EntityType>
   <EntityType Name="Vet">
     <Key>
@@ -66,7 +67,7 @@
   </Association>
   <Association Name="TreatmentToPet">
     <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
-    <End Role="Treatment" Type="Self.Treatment" Multiplicity="0..1" />
+    <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Pet">
         <PropertyRef Name="Id" />

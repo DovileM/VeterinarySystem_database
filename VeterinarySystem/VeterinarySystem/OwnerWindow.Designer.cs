@@ -37,6 +37,7 @@
             this.seeVetInfo = new System.Windows.Forms.Button();
             this.seeClinicInfo = new System.Windows.Forms.Button();
             this.insertNewPet = new System.Windows.Forms.Button();
+            this.sickPet = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -58,7 +59,7 @@
             // logout
             // 
             this.logout.Image = ((System.Drawing.Image)(resources.GetObject("logout.Image")));
-            this.logout.Location = new System.Drawing.Point(252, 296);
+            this.logout.Location = new System.Drawing.Point(252, 305);
             this.logout.Name = "logout";
             this.logout.Size = new System.Drawing.Size(86, 41);
             this.logout.TabIndex = 8;
@@ -79,7 +80,7 @@
             // seePetInfo
             // 
             this.seePetInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seePetInfo.Location = new System.Drawing.Point(160, 164);
+            this.seePetInfo.Location = new System.Drawing.Point(160, 206);
             this.seePetInfo.Name = "seePetInfo";
             this.seePetInfo.Size = new System.Drawing.Size(178, 27);
             this.seePetInfo.TabIndex = 10;
@@ -90,7 +91,7 @@
             // seeVetInfo
             // 
             this.seeVetInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seeVetInfo.Location = new System.Drawing.Point(160, 197);
+            this.seeVetInfo.Location = new System.Drawing.Point(160, 239);
             this.seeVetInfo.Name = "seeVetInfo";
             this.seeVetInfo.Size = new System.Drawing.Size(178, 27);
             this.seeVetInfo.TabIndex = 11;
@@ -100,7 +101,7 @@
             // seeClinicInfo
             // 
             this.seeClinicInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seeClinicInfo.Location = new System.Drawing.Point(160, 230);
+            this.seeClinicInfo.Location = new System.Drawing.Point(160, 272);
             this.seeClinicInfo.Name = "seeClinicInfo";
             this.seeClinicInfo.Size = new System.Drawing.Size(178, 27);
             this.seeClinicInfo.TabIndex = 12;
@@ -119,12 +120,24 @@
             this.insertNewPet.UseVisualStyleBackColor = true;
             this.insertNewPet.Click += new System.EventHandler(this.insertNewPet_Click);
             // 
+            // sickPet
+            // 
+            this.sickPet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sickPet.Location = new System.Drawing.Point(160, 164);
+            this.sickPet.Name = "sickPet";
+            this.sickPet.Size = new System.Drawing.Size(178, 36);
+            this.sickPet.TabIndex = 14;
+            this.sickPet.Text = "Sick pet? Regist!";
+            this.sickPet.UseVisualStyleBackColor = true;
+            this.sickPet.Click += new System.EventHandler(this.sickPet_Click);
+            // 
             // OwnerWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(356, 351);
+            this.ClientSize = new System.Drawing.Size(356, 356);
+            this.Controls.Add(this.sickPet);
             this.Controls.Add(this.insertNewPet);
             this.Controls.Add(this.seeClinicInfo);
             this.Controls.Add(this.seeVetInfo);
@@ -149,5 +162,6 @@
         private System.Windows.Forms.Button seeVetInfo;
         private System.Windows.Forms.Button seeClinicInfo;
         private System.Windows.Forms.Button insertNewPet;
+        private System.Windows.Forms.Button sickPet;
     }
 }

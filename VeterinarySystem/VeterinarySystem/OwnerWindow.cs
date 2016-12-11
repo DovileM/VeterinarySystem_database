@@ -58,5 +58,11 @@ namespace VeterinarySystem
             OwnerNewPetWindow newPet = new OwnerNewPetWindow(_pCode);
             newPet.Show();
         }
+
+        private void sickPet_Click(object sender, EventArgs e)
+        {
+            OwnerRegistPetWindow sickPet = new OwnerRegistPetWindow(_pCode);
+            sickPet.Show();
+        }
     }
 }

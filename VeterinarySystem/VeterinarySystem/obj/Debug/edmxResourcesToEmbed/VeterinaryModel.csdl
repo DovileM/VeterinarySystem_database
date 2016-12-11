@@ -31,7 +31,7 @@
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Species" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Born" Type="DateTime" Precision="0" />
-    <Property Name="Weight" Type="Decimal" Precision="3" Scale="3" />
+    <Property Name="Weight" Type="Decimal" Precision="6" Scale="3" />
     <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Owner1" Relationship="Self.PetToOwner" FromRole="Pet" ToRole="Owner" />
     <NavigationProperty Name="Treatment" Relationship="Self.TreatmentToPet" FromRole="Pet" ToRole="Treatment" />
@@ -43,7 +43,7 @@
     <Property Name="Animal" Type="Int32" Nullable="false" />
     <Property Name="Vet" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Start" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="End" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="End" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Pet" Relationship="Self.TreatmentToPet" FromRole="Treatment" ToRole="Pet" />
     <NavigationProperty Name="Vet1" Relationship="Self.TreatmentToVet" FromRole="Treatment" ToRole="Vet" />
   </EntityType>

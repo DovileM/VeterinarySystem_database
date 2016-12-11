@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseVeterinaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DatabaseVeterinaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clinic">
           <Key>
             <PropertyRef Name="Name" />
@@ -28,23 +28,24 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Owner" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Species" Type="nvarchar" MaxLength="50" />
           <Property Name="Born" Type="date" />
-          <Property Name="Weight" Type="decimal" Precision="3" Scale="3" />
+          <Property Name="Weight" Type="decimal" Precision="6" Scale="3" />
           <Property Name="Color" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Treatment">
           <Key>
             <PropertyRef Name="Animal" />
+            <PropertyRef Name="Vet" />
           </Key>
           <Property Name="Animal" Type="int" Nullable="false" />
           <Property Name="Vet" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Start" Type="date" Nullable="false" />
-          <Property Name="End" Type="date" Nullable="false" />
+          <Property Name="End" Type="date" />
         </EntityType>
         <EntityType Name="Vet">
           <Key>
@@ -71,7 +72,7 @@
         </Association>
         <Association Name="TreatmentToPet">
           <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
-          <End Role="Treatment" Type="Self.Treatment" Multiplicity="0..1" />
+          <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Pet">
               <PropertyRef Name="Id" />
@@ -128,8 +129,7 @@
             <End Role="Vet" EntitySet="Vet" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseVeterinaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -164,7 +164,7 @@
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Species" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Born" Type="DateTime" Precision="0" />
-          <Property Name="Weight" Type="Decimal" Precision="3" Scale="3" />
+          <Property Name="Weight" Type="Decimal" Precision="6" Scale="3" />
           <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Owner1" Relationship="Self.PetToOwner" FromRole="Pet" ToRole="Owner" />
           <NavigationProperty Name="Treatment" Relationship="Self.TreatmentToPet" FromRole="Pet" ToRole="Treatment" />
@@ -176,7 +176,7 @@
           <Property Name="Animal" Type="Int32" Nullable="false" />
           <Property Name="Vet" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Start" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="End" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="End" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Pet" Relationship="Self.TreatmentToPet" FromRole="Treatment" ToRole="Pet" />
           <NavigationProperty Name="Vet1" Relationship="Self.TreatmentToVet" FromRole="Treatment" ToRole="Vet" />
         </EntityType>

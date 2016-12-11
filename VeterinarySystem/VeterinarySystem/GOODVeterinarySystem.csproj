@@ -108,6 +108,12 @@
     <Compile Include="ClinicNewVetWindow.Designer.cs">
       <DependentUpon>ClinicNewVetWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="OwnerRegistPetWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OwnerRegistPetWindow.Designer.cs">
+      <DependentUpon>OwnerRegistPetWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Owner.cs">
       <DependentUpon>VeterinaryModel.tt</DependentUpon>
     </Compile>
@@ -205,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClinicNewVetWindow.resx">
       <DependentUpon>ClinicNewVetWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OwnerRegistPetWindow.resx">
+      <DependentUpon>OwnerRegistPetWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OwnerClinicWindow.resx">
       <DependentUpon>OwnerClinicWindow.cs</DependentUpon>
