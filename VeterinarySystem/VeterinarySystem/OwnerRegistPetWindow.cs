@@ -23,6 +23,7 @@ namespace VeterinarySystem
         public OwnerRegistPetWindow(string pCode)
         {
             InitializeComponent();
+            _pCode = pCode;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,7 +31,7 @@ namespace VeterinarySystem
             using (VeterinaryEntities dataBase = new VeterinaryEntities())
             {
                 var pets = dataBase.Pets.Where(p => p.Owner.Equals(_pCode)).Select(p => new { Name = p.Name, Type = p.Type, Id = p.Id });
-                _petsId = new int[pets.ToList().Count];
+                _petsId = new int[pets.Count()];
                 int i = 0;
                 foreach (var pet in pets)
                 {
@@ -40,7 +41,7 @@ namespace VeterinarySystem
 
                 i = 0;
                 var clinics = dataBase.Clinics.Select(c => new { Name = c.Name, City = c.City });
-                _clinics = new string[clinics.ToList().Count];
+                _clinics = new string[clinics.Count()];
                 foreach (var clinic in clinics)
                 {
                     chooseClinic.Items.Add(clinic.Name +", "+clinic.City);
@@ -56,12 +57,13 @@ namespace VeterinarySystem
 
         private void chooseClinic_SelectedIndexChanged(object sender, EventArgs e)
         {
+            chooseVet.Items.Clear();
             _selectedClinic = _clinics[chooseClinic.SelectedIndex];
             using(VeterinaryEntities dataBase = new VeterinaryEntities())
             {
-                var vets = dataBase.Vets.Where(v => v.Clinic.Equals(_clinics[chooseClinic.SelectedIndex])).
+                var vets = dataBase.Vets.Where(v => v.Clinic.Equals(_selectedClinic)).
                             Select(v => new {Name = v.Name, SurName = v.SurName, PCode = v.PCode});
-                _vets = new string[vets.ToList().Count];
+                _vets = new string[vets.Count()];
                 int i = 0;
                 foreach (var vet in vets)
                 {

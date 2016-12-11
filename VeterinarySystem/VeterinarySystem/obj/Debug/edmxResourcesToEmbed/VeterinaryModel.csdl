@@ -25,7 +25,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Owner" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -34,11 +34,12 @@
     <Property Name="Weight" Type="Decimal" Precision="6" Scale="3" />
     <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Owner1" Relationship="Self.PetToOwner" FromRole="Pet" ToRole="Owner" />
-    <NavigationProperty Name="Treatment" Relationship="Self.TreatmentToPet" FromRole="Pet" ToRole="Treatment" />
+    <NavigationProperty Name="Treatments" Relationship="Self.TreatmentToPet" FromRole="Pet" ToRole="Treatment" />
   </EntityType>
   <EntityType Name="Treatment">
     <Key>
       <PropertyRef Name="Animal" />
+      <PropertyRef Name="Vet" />
     </Key>
     <Property Name="Animal" Type="Int32" Nullable="false" />
     <Property Name="Vet" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
@@ -86,7 +87,7 @@
   </Association>
   <Association Name="TreatmentToPet">
     <End Role="Pet" Type="Self.Pet" Multiplicity="1" />
-    <End Role="Treatment" Type="Self.Treatment" Multiplicity="0..1" />
+    <End Role="Treatment" Type="Self.Treatment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Pet">
         <PropertyRef Name="Id" />
