@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VeterinarySystem
@@ -80,7 +75,7 @@ namespace VeterinarySystem
 
         private void clinicInfoButton_Click(object sender, EventArgs e)
         {
-            OwnerClinicWindow clinic = new OwnerClinicWindow("Clinic", _pCode);
+            OwnerSeeInformationWindow clinic = new OwnerSeeInformationWindow("Clinic", _pCode);
             clinic.Show();
         }
 
@@ -100,7 +95,7 @@ namespace VeterinarySystem
 
         private void vetsInfoButton_Click(object sender, EventArgs e)
         {
-            OwnerClinicWindow clinic = new OwnerClinicWindow("Vet", _selectedClinic);
+            OwnerSeeInformationWindow clinic = new OwnerSeeInformationWindow("Vet", _selectedClinic);
             clinic.Show();
         }
     }

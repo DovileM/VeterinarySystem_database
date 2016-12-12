@@ -75,7 +75,7 @@ namespace VeterinarySystem
             }
             else if(FindUser("Name", "SurName", dataSet.Tables["Vet"].Rows))
             {
-                using (VetWindow vet = new VetWindow())
+                using (VetWindow vet = new VetWindow(_username, _password))
                 {
                     Hide();
                     if (vet.ShowDialog() == DialogResult.OK)

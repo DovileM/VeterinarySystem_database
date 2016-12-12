@@ -43,19 +43,19 @@ namespace VeterinarySystem
 
         private void seeClinicInfo_Click(object sender, EventArgs e)
         {
-            OwnerClinicWindow clinic = new OwnerClinicWindow("Clinic", _pCode);
+            OwnerSeeInformationWindow clinic = new OwnerSeeInformationWindow("Clinic", _pCode);
             clinic.Show();
         }
 
         private void seePetInfo_Click(object sender, EventArgs e)
         {
-            OwnerClinicWindow pet = new OwnerClinicWindow("Pet", _pCode);
+            OwnerSeeInformationWindow pet = new OwnerSeeInformationWindow("Pet", _pCode);
             pet.Show();
         }
 
         private void insertNewPet_Click(object sender, EventArgs e)
         {
-            OwnerNewPetWindow newPet = new OwnerNewPetWindow(_pCode);
+            OwnerNewPetWindow newPet = new OwnerNewPetWindow(_pCode,"Owner");
             newPet.Show();
         }
 

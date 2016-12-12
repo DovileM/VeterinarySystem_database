@@ -1,6 +1,6 @@
 ﻿namespace VeterinarySystem
 {
-    partial class OwnerClinicWindow
+    partial class OwnerSeeInformationWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OwnerClinicWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OwnerSeeInformationWindow));
             this.label = new System.Windows.Forms.Label();
             this.tableDataGridView = new System.Windows.Forms.DataGridView();
             this.cancel = new System.Windows.Forms.Button();

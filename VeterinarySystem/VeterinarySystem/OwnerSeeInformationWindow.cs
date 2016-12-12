@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace VeterinarySystem
 {
-    public partial class OwnerClinicWindow : Form
+    public partial class OwnerSeeInformationWindow : Form
     {
         private string _pCode;
         private int[] _petID;
-        public OwnerClinicWindow(string type, string pCode)
+        public OwnerSeeInformationWindow(string type, string pCode)
         {
             InitializeComponent();
             _pCode = pCode;
@@ -20,6 +20,8 @@ namespace VeterinarySystem
                 ShowPetsInformation();
             else if (type.Equals("Vet"))
                 ShowVetsInformation();
+            else if (type.Equals("Vet patients"))
+                ShowVetsPatientsInformation();
         }
 
         private void cancel_Click(object sender, EventArgs e)
@@ -181,6 +183,65 @@ namespace VeterinarySystem
                 }
             }
         }
+
+        private void ShowVetsPatientsInformation()
+        {
+            label.Text = "All pets' information:";
+            string[] info = new string[] { "Name","Owner", "Type", "Specie","Age","Weight","Color", "Treatment start", "Treatment end" };
+
+            tableDataGridView.ColumnCount = info.Length;
+            for (int i = 0; i < info.Length; i++)
+            {
+                tableDataGridView.Columns[i].Name = info[i];
+            }
+
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
+            {
+                var pets = (from vet in dataBase.Vets
+                            join treat in dataBase.Treatments on vet.PCode equals treat.Vet
+                            join pet in dataBase.Pets on treat.Animal equals pet.Id
+                            join owner in dataBase.Owners on pet.Owner equals owner.PCode
+                            where vet.PCode.Equals(_pCode)
+
+                            select new
+                            {
+                                Name = pet.Name,
+                                Type = pet.Type,
+                                Species = pet.Species,
+                                Age = pet.Born,
+                                Weight = pet.Weight,
+                                Color = pet.Color,
+                                Owner = owner.Name +" "+owner.SurName,
+                                Start = treat.Start,
+                                End = treat.End,
+                            });
+
+                int i = 0;
+                foreach (var pet in pets)
+                {
+                    tableDataGridView.Rows.Add();
+                    tableDataGridView.Rows[i].Cells[0].Value = pet.Name;
+                    tableDataGridView.Rows[i].Cells[1].Value = pet.Owner;
+                    tableDataGridView.Rows[i].Cells[2].Value = pet.Type;
+                    tableDataGridView.Rows[i].Cells[3].Value = pet.Species;
+                    if (pet.Age == null)
+                        tableDataGridView.Rows[i].Cells[4].Value = null;
+                    else
+                        tableDataGridView.Rows[i].Cells[4].Value = (DateTime.Today.Year - pet.Age.Value.Year).ToString() + " years " +
+                                                               (DateTime.Today.Month - pet.Age.Value.Month).ToString() + " months";
+                    tableDataGridView.Rows[i].Cells[5].Value = pet.Weight;
+                    tableDataGridView.Rows[i].Cells[6].Value = pet.Color;
+                    tableDataGridView.Rows[i].Cells[7].Value = pet.Start.ToShortDateString();
+                    if (string.IsNullOrEmpty(pet.End.Value.ToString()))
+                        tableDataGridView.Rows[i].Cells[8].Value = null;
+                    else
+                        tableDataGridView.Rows[i].Cells[8].Value = pet.End.Value.ToShortDateString();
+                    i++;
+                }
+            }
+        }
+
+
 
         private void tableDataGridView_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {

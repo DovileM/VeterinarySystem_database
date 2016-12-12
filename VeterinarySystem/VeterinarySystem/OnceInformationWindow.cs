@@ -6,16 +6,28 @@ using System.Windows.Forms;
 
 namespace VeterinarySystem
 {
-    public partial class ClinicOnceInformationWindow : Form
+    public partial class OnceInformationWindow : Form
     {
         private string _pCode;
         private string _clinic;
-        public ClinicOnceInformationWindow(string clinic)
+        public OnceInformationWindow(string type, string clinic)
         {
             InitializeComponent();
-            _clinic = clinic;
-            chooseVet.Text = "Choose a vet";
-            chooseVet.SelectedIndex = -1;
+            if (type.Equals("Clinic"))
+            {
+                choose.Visible = true;
+                _clinic = clinic;
+                chooseVet.Text = "Choose a vet";
+                chooseVet.SelectedIndex = -1;
+            }
+            else if (type.Equals("Vet"))
+            {
+                _pCode = clinic;
+                clearVisible();
+                choose.Visible = false;
+                SeeOwnerLabels();
+                SeeVetAnimals();
+            }
         }
 
         private void choose_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +147,33 @@ namespace VeterinarySystem
             }
         }
 
+        private void SeeVetAnimals()
+        {
+            int selected = animalComboBox.SelectedIndex;
+
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
+            {
+                var pets = (from pet in dataBase.Pets
+                            join owner in dataBase.Owners on pet.Owner equals owner.PCode
+                            join treat in dataBase.Treatments on pet.Id equals treat.Animal
+                            join vet in dataBase.Vets on treat.Vet equals vet.PCode
+                            where vet.PCode == _pCode
+                            select new
+                            {
+                                PName = pet.Name,
+                                PType = pet.Type,
+                                Clinic = vet.Clinic
+                            }).Distinct();
+
+                foreach (var pet in pets)
+                {
+                        animalComboBox.Items.Add(pet.PName + ", " + pet.PType.ToLower());
+                    _clinic = pet.Clinic;
+                }
+            }
+        }
+
+
         private void animalComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int selected = animalComboBox.SelectedIndex;
@@ -164,7 +203,6 @@ namespace VeterinarySystem
                     {
                         if (i == selected)
                         {
-                            Trace.WriteLine(owner.Pets);
                             _pCode = owner.PCode;
                             pCodeText.Text = owner.PCode;
                             fNameText.Text = owner.FName;
