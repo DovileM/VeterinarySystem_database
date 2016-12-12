@@ -134,6 +134,7 @@
             this.Controls.Add(this.logout);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VetWindow";
             this.Text = "Vet";
             this.Load += new System.EventHandler(this.Vet_Load);

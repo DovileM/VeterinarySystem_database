@@ -111,8 +111,9 @@
             this.Controls.Add(this.delete);
             this.Controls.Add(this.update);
             this.Controls.Add(this.cancel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateDeleteWindow";
-            this.Text = "UpdateDeleteWindow";
+            this.Text = "Warnning";
             this.ResumeLayout(false);
 
         }

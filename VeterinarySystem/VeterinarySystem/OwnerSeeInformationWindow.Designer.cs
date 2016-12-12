@@ -66,7 +66,7 @@
             this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
-            // OwnerClinicWindow
+            // OwnerSeeInformationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -75,8 +75,9 @@
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.tableDataGridView);
             this.Controls.Add(this.label);
-            this.Name = "OwnerClinicWindow";
-            this.Text = "OwnerClinicWindow";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "OwnerSeeInformationWindow";
+            this.Text = "Owner information";
             ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

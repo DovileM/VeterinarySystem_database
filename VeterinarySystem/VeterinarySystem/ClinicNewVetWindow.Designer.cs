@@ -238,8 +238,9 @@
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.ok);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClinicNewVetWindow";
-            this.Text = "ClinicNewVet";
+            this.Text = "Clinic vet";
             this.ResumeLayout(false);
             this.PerformLayout();
 

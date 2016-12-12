@@ -146,6 +146,7 @@
             this.Controls.Add(this.logout);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OwnerWindow";
             this.Text = "Owner";
             this.ResumeLayout(false);

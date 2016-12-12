@@ -371,8 +371,9 @@
             this.Controls.Add(this.choose);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SignUpWindow";
-            this.Text = "SignUp";
+            this.Text = "Sign up";
             this.Load += new System.EventHandler(this.SignUpWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

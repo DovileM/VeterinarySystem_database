@@ -49,6 +49,7 @@
             this.endDate = new System.Windows.Forms.DateTimePicker();
             this.petsLabel = new System.Windows.Forms.Label();
             this.choosePet = new System.Windows.Forms.ComboBox();
+            this.survive = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // required
@@ -56,7 +57,7 @@
             this.required.AutoSize = true;
             this.required.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.required.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.required.Location = new System.Drawing.Point(310, 258);
+            this.required.Location = new System.Drawing.Point(310, 178);
             this.required.Name = "required";
             this.required.Size = new System.Drawing.Size(98, 15);
             this.required.TabIndex = 60;
@@ -66,20 +67,21 @@
             // birth
             // 
             this.birth.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.birth.Location = new System.Drawing.Point(79, 233);
+            this.birth.Location = new System.Drawing.Point(67, 233);
             this.birth.MaxDate = new System.DateTime(2017, 12, 31, 0, 0, 0, 0);
             this.birth.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.birth.Name = "birth";
             this.birth.Size = new System.Drawing.Size(238, 22);
             this.birth.TabIndex = 59;
             this.birth.Value = new System.DateTime(2016, 12, 6, 0, 0, 0, 0);
+            this.birth.ValueChanged += new System.EventHandler(this.birth_ValueChanged);
             // 
             // name
             // 
             this.name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.name.Location = new System.Drawing.Point(230, 54);
             this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(157, 26);
+            this.name.Size = new System.Drawing.Size(178, 26);
             this.name.TabIndex = 58;
             // 
             // type
@@ -87,7 +89,7 @@
             this.type.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.type.Location = new System.Drawing.Point(230, 86);
             this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(157, 26);
+            this.type.Size = new System.Drawing.Size(178, 26);
             this.type.TabIndex = 57;
             // 
             // species
@@ -95,7 +97,7 @@
             this.species.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.species.Location = new System.Drawing.Point(230, 118);
             this.species.Name = "species";
-            this.species.Size = new System.Drawing.Size(157, 26);
+            this.species.Size = new System.Drawing.Size(178, 26);
             this.species.TabIndex = 56;
             // 
             // label6
@@ -158,7 +160,7 @@
             this.weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weight.Location = new System.Drawing.Point(230, 149);
             this.weight.Name = "weight";
-            this.weight.Size = new System.Drawing.Size(157, 26);
+            this.weight.Size = new System.Drawing.Size(178, 26);
             this.weight.TabIndex = 50;
             // 
             // cancel
@@ -166,7 +168,7 @@
             this.cancel.BackColor = System.Drawing.SystemColors.Control;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.Image = ((System.Drawing.Image)(resources.GetObject("cancel.Image")));
-            this.cancel.Location = new System.Drawing.Point(250, 297);
+            this.cancel.Location = new System.Drawing.Point(249, 321);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(80, 30);
             this.cancel.TabIndex = 49;
@@ -178,7 +180,7 @@
             this.ok.BackColor = System.Drawing.SystemColors.Control;
             this.ok.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ok.Image = ((System.Drawing.Image)(resources.GetObject("ok.Image")));
-            this.ok.Location = new System.Drawing.Point(101, 297);
+            this.ok.Location = new System.Drawing.Point(99, 321);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(80, 30);
             this.ok.TabIndex = 48;
@@ -196,9 +198,9 @@
             // color
             // 
             this.color.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.color.Location = new System.Drawing.Point(79, 193);
+            this.color.Location = new System.Drawing.Point(67, 193);
             this.color.Name = "color";
-            this.color.Size = new System.Drawing.Size(308, 26);
+            this.color.Size = new System.Drawing.Size(341, 26);
             this.color.TabIndex = 61;
             // 
             // birthLabel
@@ -227,7 +229,7 @@
             // endDate
             // 
             this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endDate.Location = new System.Drawing.Point(79, 261);
+            this.endDate.Location = new System.Drawing.Point(67, 261);
             this.endDate.MaxDate = new System.DateTime(2017, 12, 31, 0, 0, 0, 0);
             this.endDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.endDate.Name = "endDate";
@@ -254,17 +256,30 @@
             this.choosePet.FormattingEnabled = true;
             this.choosePet.Location = new System.Drawing.Point(230, 20);
             this.choosePet.Name = "choosePet";
-            this.choosePet.Size = new System.Drawing.Size(157, 28);
+            this.choosePet.Size = new System.Drawing.Size(178, 28);
             this.choosePet.TabIndex = 66;
             this.choosePet.Visible = false;
             this.choosePet.SelectedIndexChanged += new System.EventHandler(this.choosePet_SelectedIndexChanged);
+            // 
+            // survive
+            // 
+            this.survive.AutoSize = true;
+            this.survive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.survive.Location = new System.Drawing.Point(311, 265);
+            this.survive.Name = "survive";
+            this.survive.Size = new System.Drawing.Size(130, 20);
+            this.survive.TabIndex = 67;
+            this.survive.Text = "Did not survive";
+            this.survive.UseVisualStyleBackColor = true;
+            this.survive.Visible = false;
             // 
             // OwnerNewPetWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(436, 340);
+            this.ClientSize = new System.Drawing.Size(443, 363);
+            this.Controls.Add(this.survive);
             this.Controls.Add(this.choosePet);
             this.Controls.Add(this.petsLabel);
             this.Controls.Add(this.endDate);
@@ -285,8 +300,9 @@
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.ok);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "OwnerNewPetWindow";
-            this.Text = "OwnerNewPetWindow";
+            this.Text = "Pet";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,5 +329,6 @@
         private System.Windows.Forms.DateTimePicker endDate;
         private System.Windows.Forms.Label petsLabel;
         private System.Windows.Forms.ComboBox choosePet;
+        private System.Windows.Forms.CheckBox survive;
     }
 }

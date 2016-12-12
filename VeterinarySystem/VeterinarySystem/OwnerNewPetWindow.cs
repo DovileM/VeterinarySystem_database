@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Diagnostics;
 using System.Windows.Forms;
 using System.Linq;
 
@@ -21,6 +20,12 @@ namespace VeterinarySystem
             {
                 ShowVetLabels();
                 ShowPetData();
+            }
+            else if (type.Equals("VetEdit"))
+            {
+                ShowVetLabels();
+                ShowPetData();
+                survive.Visible = true;
             }
         }
 
@@ -50,16 +55,35 @@ namespace VeterinarySystem
         {
             using(VeterinaryEntities dataBase = new VeterinaryEntities())
             {
-                var pets = from p in dataBase.Pets
-                           join t in dataBase.Treatments on p.Id equals t.Animal
-                           where t.Vet == _pCode && t.End == null
-                           select new { Name = p.Name, Type = p.Type, Id = p.Id };
-                _petsId = new int[pets.Count()];
-                int i = 0;
-                foreach (var pet in pets)
+                if (_type.Equals("Vet"))
                 {
-                    choosePet.Items.Add(pet.Name+", "+pet.Type);
-                    _petsId[i++] = pet.Id;
+                    var pets = from p in dataBase.Pets
+                               join t in dataBase.Treatments on p.Id equals t.Animal
+                               where t.Vet == _pCode && t.End == null
+                               select new { Name = p.Name, Type = p.Type, Id = p.Id };
+                    _petsId = new int[pets.Count()];
+
+                    int i = 0;
+                    foreach (var pet in pets)
+                    {
+                        choosePet.Items.Add(pet.Name + ", " + pet.Type);
+                        _petsId[i++] = pet.Id;
+                    }
+                }
+                else
+                {
+                    var pets = from p in dataBase.Pets
+                               join t in dataBase.Treatments on p.Id equals t.Animal
+                               where t.Vet == _pCode
+                               select new { Name = p.Name, Type = p.Type, Id = p.Id };
+                    _petsId = new int[pets.Count()];
+
+                    int i = 0;
+                    foreach (var pet in pets)
+                    {
+                        choosePet.Items.Add(pet.Name + ", " + pet.Type);
+                        _petsId[i++] = pet.Id;
+                    }
                 }
             }
         }
@@ -67,14 +91,32 @@ namespace VeterinarySystem
 
         private void ok_Click(object sender, EventArgs e)
         {
-            if (type.Equals("Vet"))
+            if (_type.Equals("Vet") || _type.Equals("VetEdit"))
             {
-                using(VeterinaryEntities dataBase = new VeterinaryEntities())
+                if (survive.Checked)
                 {
-                    Treatment treat = dataBase.Treatments.Where(t => t.Animal == _petId && t.Vet.Equals(_pCode)).Select(t => t).First();
-                    treat.End = endDate.Value.Date;
-                    dataBase.SaveChanges();
+                    using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                    {
+                        var treats = dataBase.Treatments.Where(t => t.Animal == _petId && _pCode.Equals(t.Vet)).Select(t => t);
+                        foreach (var treat in treats)
+                        {
+                            dataBase.Treatments.Remove(treat);
+                        }
+                        Pet pet = dataBase.Pets.Where(t => t.Id == _petId).Select(t => t).First();
+                        dataBase.Pets.Remove(pet);
+                        dataBase.SaveChanges();
+                    }
                 }
+                else
+                {
+                    using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                    {
+                        Treatment treat = dataBase.Treatments.Where(t => t.Animal == _petId && t.Vet.Equals(_pCode)).Select(t => t).First();
+                        treat.End = endDate.Value.Date;
+                        dataBase.SaveChanges();
+                    }
+                }
+                Close();
             }
             else
             {
@@ -130,7 +172,7 @@ namespace VeterinarySystem
             {
                 var pet = (from p in dataBase.Pets
                            join t in dataBase.Treatments on p.Id equals t.Animal
-                           where t.Vet == _pCode && t.End == null && _petId == t.Animal
+                           where t.Vet == _pCode && _petId == t.Animal
                            select new {
                                Name = p.Name, 
                                Type = p.Type,
@@ -149,6 +191,11 @@ namespace VeterinarySystem
                 birth.Text = pet.Start.ToShortDateString();
                 endDate.MinDate = pet.Start;
             }
+        }
+
+        private void birth_ValueChanged(object sender, EventArgs e)
+        {
+            endDate.MinDate = birth.Value;
         }
     }
 }

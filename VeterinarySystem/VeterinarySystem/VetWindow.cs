@@ -73,7 +73,17 @@ namespace VeterinarySystem
 
         private void editPatient_Click(object sender, EventArgs e)
         {
-
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
+            {
+                int pets = dataBase.Treatments.Where(t => t.Vet.Equals(_pCode)).Count();
+                if (pets == 0)
+                    MessageBox.Show("Sad, but you do not have any treatments!", "Error", MessageBoxButtons.OK);
+                else
+                {
+                    OwnerNewPetWindow pet = new OwnerNewPetWindow(_pCode, "VetEdit");
+                    pet.Show();
+                }
+            }
         }
     }
 }

@@ -92,6 +92,7 @@
             // 
             // ClinicAllInformationWindow
             // 
+            this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
@@ -101,8 +102,9 @@
             this.Controls.Add(this.choose);
             this.Controls.Add(this.seeLabel);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClinicAllInformationWindow";
-            this.Text = "ClinicAllInformation";
+            this.Text = "Clinic information";
             ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

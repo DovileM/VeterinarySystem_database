@@ -312,7 +312,7 @@
             this.count.TabIndex = 34;
             this.count.Visible = false;
             // 
-            // ClinicOnceInformationWindow
+            // OnceInformationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -342,8 +342,9 @@
             this.Controls.Add(this.chooseVetLabel);
             this.Controls.Add(this.choose);
             this.Controls.Add(this.label1);
-            this.Name = "ClinicOnceInformationWindow";
-            this.Text = "ClinicInformation";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "OnceInformationWindow";
+            this.Text = "Clinic information";
             this.ResumeLayout(false);
             this.PerformLayout();
 

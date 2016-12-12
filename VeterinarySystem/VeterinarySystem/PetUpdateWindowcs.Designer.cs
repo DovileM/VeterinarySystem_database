@@ -216,8 +216,9 @@
             this.Controls.Add(this.weight);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PetUpdateWindow";
-            this.Text = "PetUpdateWindow";
+            this.Text = "Pet";
             this.Load += new System.EventHandler(this.PetUpdateWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
