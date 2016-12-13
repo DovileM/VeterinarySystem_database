@@ -33,9 +33,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.logout = new System.Windows.Forms.Button();
             this.editProfile = new System.Windows.Forms.Button();
-            this.insertNewPatient = new System.Windows.Forms.Button();
+            this.newPatient = new System.Windows.Forms.Button();
             this.editPatient = new System.Windows.Forms.Button();
             this.ownerInfo = new System.Windows.Forms.Button();
+            this.patientsInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -75,15 +76,16 @@
             this.editProfile.UseVisualStyleBackColor = true;
             this.editProfile.Click += new System.EventHandler(this.editProfile_Click);
             // 
-            // insertNewPatient
+            // newPatient
             // 
-            this.insertNewPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.insertNewPatient.Location = new System.Drawing.Point(176, 117);
-            this.insertNewPatient.Name = "insertNewPatient";
-            this.insertNewPatient.Size = new System.Drawing.Size(178, 27);
-            this.insertNewPatient.TabIndex = 9;
-            this.insertNewPatient.Text = "New patient";
-            this.insertNewPatient.UseVisualStyleBackColor = true;
+            this.newPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newPatient.Location = new System.Drawing.Point(176, 117);
+            this.newPatient.Name = "newPatient";
+            this.newPatient.Size = new System.Drawing.Size(178, 27);
+            this.newPatient.TabIndex = 9;
+            this.newPatient.Text = "New patients";
+            this.newPatient.UseVisualStyleBackColor = true;
+            this.newPatient.Click += new System.EventHandler(this.newPatient_Click);
             // 
             // editPatient
             // 
@@ -94,16 +96,29 @@
             this.editPatient.TabIndex = 10;
             this.editPatient.Text = "Edit patient";
             this.editPatient.UseVisualStyleBackColor = true;
+            this.editPatient.Click += new System.EventHandler(this.editPatient_Click);
             // 
             // ownerInfo
             // 
             this.ownerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ownerInfo.Location = new System.Drawing.Point(176, 183);
+            this.ownerInfo.Location = new System.Drawing.Point(176, 216);
             this.ownerInfo.Name = "ownerInfo";
             this.ownerInfo.Size = new System.Drawing.Size(178, 27);
             this.ownerInfo.TabIndex = 11;
             this.ownerInfo.Text = "Patient\'s owner\'s info";
             this.ownerInfo.UseVisualStyleBackColor = true;
+            this.ownerInfo.Click += new System.EventHandler(this.ownerInfo_Click);
+            // 
+            // patientsInfo
+            // 
+            this.patientsInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.patientsInfo.Location = new System.Drawing.Point(176, 183);
+            this.patientsInfo.Name = "patientsInfo";
+            this.patientsInfo.Size = new System.Drawing.Size(178, 27);
+            this.patientsInfo.TabIndex = 12;
+            this.patientsInfo.Text = "Patients\' info";
+            this.patientsInfo.UseVisualStyleBackColor = true;
+            this.patientsInfo.Click += new System.EventHandler(this.patientsInfo_Click);
             // 
             // VetWindow
             // 
@@ -111,13 +126,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(394, 322);
+            this.Controls.Add(this.patientsInfo);
             this.Controls.Add(this.ownerInfo);
             this.Controls.Add(this.editPatient);
-            this.Controls.Add(this.insertNewPatient);
+            this.Controls.Add(this.newPatient);
             this.Controls.Add(this.editProfile);
             this.Controls.Add(this.logout);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VetWindow";
             this.Text = "Vet";
             this.Load += new System.EventHandler(this.Vet_Load);
@@ -131,8 +148,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button logout;
         private System.Windows.Forms.Button editProfile;
-        private System.Windows.Forms.Button insertNewPatient;
+        private System.Windows.Forms.Button newPatient;
         private System.Windows.Forms.Button editPatient;
         private System.Windows.Forms.Button ownerInfo;
+        private System.Windows.Forms.Button patientsInfo;
     }
 }

@@ -74,8 +74,9 @@
             this.Controls.Add(this.tableDataGridView);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.label);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ClinicAllSpecificWindow";
-            this.Text = "CliniAllSpecificWindow";
+            this.Text = "Clini information";
             ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

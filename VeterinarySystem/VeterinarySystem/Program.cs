@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VeterinarySystem
@@ -17,9 +14,6 @@ namespace VeterinarySystem
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LogInWindow());
-            //Application.Run(new OwnerClinicWindow("Pet","5555"));
-
-
         }
     }
 }

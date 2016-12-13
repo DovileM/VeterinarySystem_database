@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VeterinarySystem
@@ -31,8 +26,15 @@ namespace VeterinarySystem
             }
             else if (table.Equals("Owner"))
             {
-                SeeOwnerLabels();
+                SeeOwner_VetLabels();
                 ShowOwnerData();
+            }
+            else if (table.Equals("Vet"))
+            {
+                SeeOwner_VetLabels();
+                startedDate.Visible = true;
+                startedLabel.Visible = true;
+                ShowVetData();
             }
         }
 
@@ -52,7 +54,7 @@ namespace VeterinarySystem
             cityLabel.Visible = true;
         }
 
-        private void SeeOwnerLabels()
+        private void SeeOwner_VetLabels()
         {
             pCodeLabel.Visible = true;
             clinic_pCode.Visible = true;
@@ -80,6 +82,8 @@ namespace VeterinarySystem
             streetTextBox.Visible = false;
             noLabel.Visible = false;
             noTextBox.Visible = false;
+            startedLabel.Visible = false;
+            startedDate.Visible = false;
         }
 
         private void ShowClinicData()
@@ -102,18 +106,37 @@ namespace VeterinarySystem
         {
             using (VeterinaryEntities dataBase = new VeterinaryEntities())
             {
-                var smth = dataBase.Owners.Where(c => c.Name.Equals(_username) && c.SurName.Equals(_password)).Select(p => p);
-                foreach (var item in smth)
+                var owners = dataBase.Owners.Where(c => c.Name.Equals(_username) && c.SurName.Equals(_password)).Select(p => p);
+                foreach (var owner in owners)
                 {
-                    Trace.WriteLine(item.ToString());
-                    clinic_pCode.Text = item.PCode.ToString();
-                    city_fNameTextBox.Text = item.Name.ToString();
-                    sNameTextBox.Text = item.SurName.ToString();
-                    streetTextBox.Text = item.SurName.ToString();
-                    phoneTextBox.Text = item.Phone.ToString();
+                    Trace.WriteLine(owner.ToString());
+                    clinic_pCode.Text = owner.PCode.ToString();
+                    city_fNameTextBox.Text = owner.Name.ToString();
+                    sNameTextBox.Text = owner.SurName.ToString();
+                    streetTextBox.Text = owner.SurName.ToString();
+                    phoneTextBox.Text = owner.Phone.ToString();
                 }
             }
         }
+
+        private void ShowVetData()
+        {
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
+            {
+                var vets = dataBase.Vets.Where(c => c.Name.Equals(_username) && c.SurName.Equals(_password)).Select(p => p);
+                foreach (var vet in vets)
+                {
+                    Trace.WriteLine(vet.ToString());
+                    clinic_pCode.Text = vet.PCode.ToString();
+                    city_fNameTextBox.Text = vet.Name.ToString();
+                    sNameTextBox.Text = vet.SurName.ToString();
+                    streetTextBox.Text = vet.SurName.ToString();
+                    phoneTextBox.Text = vet.Phone.ToString();
+                    startedDate.Text = vet.StartedAt.ToString();
+                }
+            }
+        }
+
         #endregion
 
 
@@ -147,6 +170,18 @@ namespace VeterinarySystem
                     dataBase.SaveChanges();
                 }
             }
+            else if (_table.Equals("Vet"))
+            {
+                using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                {
+                    Vet vet = dataBase.Vets.FirstOrDefault(c => c.Name.Equals(_username) && c.SurName.Equals(_password));
+                    vet.Name = city_fNameTextBox.Text;
+                    vet.SurName = streetTextBox.Text;
+                    vet.Phone = phoneTextBox.Text;
+                    vet.StartedAt = startedDate.Value.Date;
+                    dataBase.SaveChanges();
+                }
+            }
             Close();
         }
 
@@ -176,10 +211,6 @@ namespace VeterinarySystem
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            //LogInWindow login = new LogInWindow();
-            //login.Show();
-
-
         }
     }
 }

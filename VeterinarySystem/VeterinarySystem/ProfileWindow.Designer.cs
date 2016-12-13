@@ -47,6 +47,8 @@
             this.sNameTextBox = new System.Windows.Forms.TextBox();
             this.clinic_pCode = new System.Windows.Forms.Label();
             this.delete = new System.Windows.Forms.Label();
+            this.startedLabel = new System.Windows.Forms.Label();
+            this.startedDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -62,7 +64,7 @@
             this.ok.BackColor = System.Drawing.SystemColors.Control;
             this.ok.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ok.Image = ((System.Drawing.Image)(resources.GetObject("ok.Image")));
-            this.ok.Location = new System.Drawing.Point(221, 209);
+            this.ok.Location = new System.Drawing.Point(221, 223);
             this.ok.Name = "ok";
             this.ok.Size = new System.Drawing.Size(80, 30);
             this.ok.TabIndex = 13;
@@ -74,7 +76,7 @@
             this.cancel.BackColor = System.Drawing.SystemColors.Control;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancel.Image = ((System.Drawing.Image)(resources.GetObject("cancel.Image")));
-            this.cancel.Location = new System.Drawing.Point(340, 209);
+            this.cancel.Location = new System.Drawing.Point(340, 223);
             this.cancel.Name = "cancel";
             this.cancel.Size = new System.Drawing.Size(80, 30);
             this.cancel.TabIndex = 14;
@@ -231,12 +233,35 @@
             this.delete.TabIndex = 37;
             this.delete.Click += new System.EventHandler(this.delete_Click);
             // 
+            // startedLabel
+            // 
+            this.startedLabel.AutoSize = true;
+            this.startedLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.startedLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startedLabel.Location = new System.Drawing.Point(140, 186);
+            this.startedLabel.Name = "startedLabel";
+            this.startedLabel.Size = new System.Drawing.Size(112, 18);
+            this.startedLabel.TabIndex = 38;
+            this.startedLabel.Text = "Started work at:";
+            // 
+            // startedDate
+            // 
+            this.startedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.startedDate.Location = new System.Drawing.Point(252, 183);
+            this.startedDate.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.startedDate.Name = "startedDate";
+            this.startedDate.Size = new System.Drawing.Size(238, 22);
+            this.startedDate.TabIndex = 39;
+            this.startedDate.Value = new System.DateTime(2016, 12, 12, 0, 0, 0, 0);
+            // 
             // ProfileWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(502, 292);
+            this.Controls.Add(this.startedDate);
+            this.Controls.Add(this.startedLabel);
             this.Controls.Add(this.delete);
             this.Controls.Add(this.clinic_pCode);
             this.Controls.Add(this.sNameTextBox);
@@ -255,8 +280,9 @@
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.ok);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ProfileWindow";
-            this.Text = "ClinicProfile";
+            this.Text = "Profile";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +308,7 @@
         private System.Windows.Forms.TextBox sNameTextBox;
         private System.Windows.Forms.Label clinic_pCode;
         private System.Windows.Forms.Label delete;
+        private System.Windows.Forms.Label startedLabel;
+        private System.Windows.Forms.DateTimePicker startedDate;
     }
 }

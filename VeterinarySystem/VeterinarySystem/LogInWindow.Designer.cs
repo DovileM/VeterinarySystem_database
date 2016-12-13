@@ -118,8 +118,9 @@
             this.Controls.Add(this.loginbutton);
             this.Controls.Add(this.pass);
             this.Controls.Add(this.name);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "LogInWindow";
-            this.Text = "Veterinary System";
+            this.Text = "Log in";
             this.Load += new System.EventHandler(this.LogInWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

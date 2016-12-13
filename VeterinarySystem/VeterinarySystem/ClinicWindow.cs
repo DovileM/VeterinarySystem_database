@@ -34,7 +34,7 @@ namespace VeterinarySystem
 
         private void onceInformation_Click(object sender, EventArgs e)
         {
-            ClinicOnceInformationWindow onceInfo = new ClinicOnceInformationWindow(_username);
+            OnceInformationWindow onceInfo = new OnceInformationWindow("Clinic",_username);
             onceInfo.Show();
         }
 
