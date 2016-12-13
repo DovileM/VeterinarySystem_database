@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace VeterinarySystem
 {
@@ -42,6 +43,7 @@ namespace VeterinarySystem
             type.Enabled = false;
             species.Enabled = false;
             color.Enabled = false;
+            weightFormat.Visible = false;
             weight.Enabled = false;
             required.Visible = false;
             birthLabel.Text = "Start:";
@@ -53,7 +55,7 @@ namespace VeterinarySystem
 
         private void ShowPetData()
         {
-            using(VeterinaryEntities dataBase = new VeterinaryEntities())
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
             {
                 if (_type.Equals("Vet"))
                 {
@@ -91,6 +93,11 @@ namespace VeterinarySystem
 
         private void ok_Click(object sender, EventArgs e)
         {
+            name.ForeColor = System.Drawing.Color.Black;
+            type.ForeColor = System.Drawing.Color.Black;
+            species.ForeColor = System.Drawing.Color.Black;
+            weight.ForeColor = System.Drawing.Color.Black;
+            color.ForeColor = System.Drawing.Color.Black;
             if (_type.Equals("Vet") || _type.Equals("VetEdit"))
             {
                 if (survive.Checked)
@@ -124,43 +131,46 @@ namespace VeterinarySystem
                     MessageBox.Show("Some required fields are empty.", "Error", MessageBoxButtons.OK);
                 else
                 {
-                    string str_connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\DatabaseVeterinary.mdf;Integrated Security=True";
-
-                    SqlConnection connection = new SqlConnection();
-                    connection.ConnectionString = str_connection;
-                    connection.Open();
-
-                    SqlCommand insert = new SqlCommand("INSERT INTO Pet (Name, Owner, Type, Species, Born, Weight, Color) " +
-                                                        "VALUES (@N, @O, @T, @S, @B, @W, @C)", connection);
-
-                    insert.Parameters.Add(new SqlParameter("@N", name.Text));
-                    insert.Parameters.Add(new SqlParameter("@O", _pCode));
-                    insert.Parameters.Add(new SqlParameter("@T", type.Text));
-                    if (string.IsNullOrEmpty(species.Text))
-                        insert.Parameters.Add(new SqlParameter("@S", DBNull.Value));
-                    else
-                        insert.Parameters.Add(new SqlParameter("@S", species.Text));
-                    if (string.IsNullOrEmpty(birth.Text))
-                        insert.Parameters.Add(new SqlParameter("@B", DBNull.Value));
-                    else
-                        insert.Parameters.Add(new SqlParameter("@B", birth.Value.Date));
-                    if (string.IsNullOrEmpty(weight.Text))
-                        insert.Parameters.Add(new SqlParameter("@W", DBNull.Value));
-                    else
-                        insert.Parameters.Add(new SqlParameter("@W", weight.Text));
-                    if (string.IsNullOrEmpty(color.Text))
-                        insert.Parameters.Add(new SqlParameter("@C", DBNull.Value));
-                    else
-                        insert.Parameters.Add(new SqlParameter("@C", color.Text));
-
-                    try
+                    if (CheckValidation())
                     {
-                        insert.ExecuteNonQuery();
-                    }
-                    catch (SqlException) { }
+                        string str_connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\DatabaseVeterinary.mdf;Integrated Security=True";
 
-                    connection.Close();
-                    Close();
+                        SqlConnection connection = new SqlConnection();
+                        connection.ConnectionString = str_connection;
+                        connection.Open();
+
+                        SqlCommand insert = new SqlCommand("INSERT INTO Pet (Name, Owner, Type, Species, Born, Weight, Color) " +
+                                                            "VALUES (@N, @O, @T, @S, @B, @W, @C)", connection);
+
+                        insert.Parameters.Add(new SqlParameter("@N", name.Text));
+                        insert.Parameters.Add(new SqlParameter("@O", _pCode));
+                        insert.Parameters.Add(new SqlParameter("@T", type.Text));
+                        if (string.IsNullOrEmpty(species.Text))
+                            insert.Parameters.Add(new SqlParameter("@S", DBNull.Value));
+                        else
+                            insert.Parameters.Add(new SqlParameter("@S", species.Text));
+                        if (string.IsNullOrEmpty(birth.Text))
+                            insert.Parameters.Add(new SqlParameter("@B", DBNull.Value));
+                        else
+                            insert.Parameters.Add(new SqlParameter("@B", birth.Value.Date));
+                        if (string.IsNullOrEmpty(weight.Text))
+                            insert.Parameters.Add(new SqlParameter("@W", DBNull.Value));
+                        else
+                            insert.Parameters.Add(new SqlParameter("@W", weight.Text));
+                        if (string.IsNullOrEmpty(color.Text))
+                            insert.Parameters.Add(new SqlParameter("@C", DBNull.Value));
+                        else
+                            insert.Parameters.Add(new SqlParameter("@C", color.Text));
+
+                        try
+                        {
+                            insert.ExecuteNonQuery();
+                        }
+                        catch (SqlException) { }
+
+                        connection.Close();
+                        Close();
+                    }
                 }
             }
         }
@@ -168,13 +178,14 @@ namespace VeterinarySystem
         private void choosePet_SelectedIndexChanged(object sender, EventArgs e)
         {
             _petId = _petsId[choosePet.SelectedIndex];
-            using(VeterinaryEntities dataBase = new VeterinaryEntities())
+            using (VeterinaryEntities dataBase = new VeterinaryEntities())
             {
                 var pet = (from p in dataBase.Pets
                            join t in dataBase.Treatments on p.Id equals t.Animal
                            where t.Vet == _pCode && _petId == t.Animal
-                           select new {
-                               Name = p.Name, 
+                           select new
+                           {
+                               Name = p.Name,
                                Type = p.Type,
                                Species = p.Species,
                                Weight = p.Weight,
@@ -182,7 +193,7 @@ namespace VeterinarySystem
                                Start = t.Start,
                                Id = p.Id
                            }).FirstOrDefault();
-                
+
                 name.Text = pet.Name;
                 type.Text = pet.Type;
                 species.Text = pet.Species;
@@ -191,6 +202,41 @@ namespace VeterinarySystem
                 birth.Text = pet.Start.ToShortDateString();
                 endDate.MinDate = pet.Start;
             }
+        }
+
+        private bool CheckValidation()
+        {
+            bool tf = true;
+            if (!Regex.IsMatch(name.Text, @"^[\p{L} ]+$"))
+            {
+                name.ForeColor = System.Drawing.Color.Red;
+                tf = false;
+            }
+            if (!Regex.IsMatch(type.Text, @"^[\p{L} ]+$"))
+            {
+                type.ForeColor = System.Drawing.Color.Red;
+                tf = false;
+            }
+            if(!string.IsNullOrEmpty(color.Text))
+                if (!Regex.IsMatch(color.Text, @"^[\p{L} ]+$"))
+                {
+                    color.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+            if (!string.IsNullOrEmpty(species.Text))
+                if (!Regex.IsMatch(species.Text, @"^[\p{L} ]+$"))
+                {
+                    species.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+            if (!string.IsNullOrEmpty(weight.Text))
+                if (!Regex.IsMatch(weight.Text, @"^\d{0,3}.{0,1}\d{0,3}$"))
+                {
+                    weight.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+
+            return tf;
         }
 
         private void birth_ValueChanged(object sender, EventArgs e)

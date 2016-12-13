@@ -34,7 +34,7 @@
             this.choose = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.pCodeLabel = new System.Windows.Forms.Label();
-            this.clinic_pCodeTextBox = new System.Windows.Forms.TextBox();
+            this.clinicTextBox = new System.Windows.Forms.TextBox();
             this.fNameLabel = new System.Windows.Forms.Label();
             this.city_sNameTextBox = new System.Windows.Forms.TextBox();
             this.sNameTextBox = new System.Windows.Forms.TextBox();
@@ -55,6 +55,7 @@
             this.owner2Label = new System.Windows.Forms.Label();
             this.clinic2Label = new System.Windows.Forms.Label();
             this.phoneOwnerLabel = new System.Windows.Forms.Label();
+            this.pCodeTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -110,13 +111,13 @@
             this.pCodeLabel.TabIndex = 4;
             this.pCodeLabel.Text = "*Personal code:";
             // 
-            // clinic_pCodeTextBox
+            // clinicTextBox
             // 
-            this.clinic_pCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clinic_pCodeTextBox.Location = new System.Drawing.Point(239, 134);
-            this.clinic_pCodeTextBox.Name = "clinic_pCodeTextBox";
-            this.clinic_pCodeTextBox.Size = new System.Drawing.Size(157, 26);
-            this.clinic_pCodeTextBox.TabIndex = 5;
+            this.clinicTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clinicTextBox.Location = new System.Drawing.Point(239, 134);
+            this.clinicTextBox.Name = "clinicTextBox";
+            this.clinicTextBox.Size = new System.Drawing.Size(157, 26);
+            this.clinicTextBox.TabIndex = 5;
             // 
             // fNameLabel
             // 
@@ -339,12 +340,21 @@
             this.phoneOwnerLabel.TabIndex = 26;
             this.phoneOwnerLabel.Text = "Phone no.:";
             // 
+            // pCodeTextBox
+            // 
+            this.pCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pCodeTextBox.Location = new System.Drawing.Point(240, 134);
+            this.pCodeTextBox.Name = "pCodeTextBox";
+            this.pCodeTextBox.Size = new System.Drawing.Size(157, 26);
+            this.pCodeTextBox.TabIndex = 27;
+            // 
             // SignUpWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(516, 392);
+            this.Controls.Add(this.pCodeTextBox);
             this.Controls.Add(this.phoneOwnerLabel);
             this.Controls.Add(this.clinic2Label);
             this.Controls.Add(this.owner2Label);
@@ -365,7 +375,7 @@
             this.Controls.Add(this.sNameTextBox);
             this.Controls.Add(this.city_sNameTextBox);
             this.Controls.Add(this.fNameLabel);
-            this.Controls.Add(this.clinic_pCodeTextBox);
+            this.Controls.Add(this.clinicTextBox);
             this.Controls.Add(this.pCodeLabel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.choose);
@@ -387,7 +397,7 @@
         private System.Windows.Forms.ComboBox choose;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label pCodeLabel;
-        private System.Windows.Forms.TextBox clinic_pCodeTextBox;
+        private System.Windows.Forms.TextBox clinicTextBox;
         private System.Windows.Forms.Label fNameLabel;
         private System.Windows.Forms.TextBox city_sNameTextBox;
         private System.Windows.Forms.TextBox sNameTextBox;
@@ -408,5 +418,6 @@
         private System.Windows.Forms.Label owner2Label;
         private System.Windows.Forms.Label clinic2Label;
         private System.Windows.Forms.Label phoneOwnerLabel;
+        private System.Windows.Forms.TextBox pCodeTextBox;
     }
 }

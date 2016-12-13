@@ -14,6 +14,7 @@ namespace VeterinarySystem
             InitializeComponent();
             name.Text = null;
             pass.Text = null;
+            pass.PasswordChar = '*';
         }
 
         private void LogInWindow_Load(object sender, EventArgs e)
