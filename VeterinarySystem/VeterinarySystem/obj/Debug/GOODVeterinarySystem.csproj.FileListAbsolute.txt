@@ -24,6 +24,6 @@ C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\V
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.OwnerNewPetWindow.resources
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.UpdateDeleteWindow.resources
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.PetUpdateWindow.resources
-C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.OwnerRegistPetWindow.resources
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.OnceInformationWindow.resources
 C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.OwnerSeeInformationWindow.resources
+C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\obj\Debug\VeterinarySystem.PetTreatmentWindow.resources

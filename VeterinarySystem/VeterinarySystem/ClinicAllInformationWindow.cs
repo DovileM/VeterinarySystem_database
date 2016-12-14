@@ -19,9 +19,11 @@ namespace VeterinarySystem
         {
             int selected = choose.SelectedIndex;
             DeleteTable();
+            top5.Visible = false;
             switch (selected)
             {
                 case 0:
+                    top5.Visible = true;
                     PaintTableVets();
                     break;
                 case 1:
@@ -140,9 +142,10 @@ namespace VeterinarySystem
 
         private void PaintTableVets()
         {
+            tableDataGridView.Rows.Clear();
+
             string[] info = new string[] { "Personal code", "First name", "Second name", "Phone", "Experience", "Treating pets" };
             tableDataGridView.ColumnCount = info.Length;
-
 
             for (int i = 0; i < info.Length; i++)
             {
@@ -161,6 +164,9 @@ namespace VeterinarySystem
                     Experience = v.StartedAt,
                     Pets = dataBase.Treatments.Where(s => s.Vet.Equals(v.PCode)).Count()
                 });
+
+                if (top5.Checked)
+                    vets = vets.OrderByDescending(p => p.Pets).Take(5);
 
                 int i = 0;
                 foreach (var vet in vets)
@@ -186,6 +192,11 @@ namespace VeterinarySystem
         private void cancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void top5_CheckedChanged(object sender, EventArgs e)
+        {
+            PaintTableVets();
         }
     }
 }

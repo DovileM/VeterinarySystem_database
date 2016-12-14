@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
-using System.Diagnostics;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace VeterinarySystem
@@ -26,11 +26,21 @@ namespace VeterinarySystem
             }
             else if (table.Equals("Owner"))
             {
+                using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                {
+                    Owner owner = dataBase.Owners.Where(c => c.Name.Equals(_username) && c.SurName.Equals(_password)).Select(p => p).FirstOrDefault();
+                    _username = owner.PCode;
+                }
                 SeeOwner_VetLabels();
                 ShowOwnerData();
             }
             else if (table.Equals("Vet"))
             {
+                using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                {
+                    Vet vet = dataBase.Vets.Where(c => c.Name.Equals(_username) && c.SurName.Equals(_password)).Select(p => p).FirstOrDefault();
+                    _username = vet.PCode;
+                }
                 SeeOwner_VetLabels();
                 startedDate.Visible = true;
                 startedLabel.Visible = true;
@@ -90,7 +100,7 @@ namespace VeterinarySystem
         {
             using (VeterinaryEntities dataBase = new VeterinaryEntities())
             {
-                var smth = dataBase.Clinics.Where(c => c.Name.Equals(_username) && c.City.Equals(_password)).Select(p => p);
+                var smth = dataBase.Clinics.Where(c => c.Name.Equals(_username)).Select(p => p);
                 foreach (var item in smth)
                 {
                     clinic_pCode.Text = item.Name.ToString();
@@ -106,16 +116,12 @@ namespace VeterinarySystem
         {
             using (VeterinaryEntities dataBase = new VeterinaryEntities())
             {
-                var owners = dataBase.Owners.Where(c => c.Name.Equals(_username) && c.SurName.Equals(_password)).Select(p => p);
-                foreach (var owner in owners)
-                {
-                    Trace.WriteLine(owner.ToString());
+                Owner owner = dataBase.Owners.Where(c => c.PCode.Equals(_username)).Select(p => p).FirstOrDefault();
                     clinic_pCode.Text = owner.PCode.ToString();
                     city_fNameTextBox.Text = owner.Name.ToString();
                     sNameTextBox.Text = owner.SurName.ToString();
                     streetTextBox.Text = owner.SurName.ToString();
                     phoneTextBox.Text = owner.Phone.ToString();
-                }
             }
         }
 
@@ -123,17 +129,13 @@ namespace VeterinarySystem
         {
             using (VeterinaryEntities dataBase = new VeterinaryEntities())
             {
-                var vets = dataBase.Vets.Where(c => c.Name.Equals(_username) && c.SurName.Equals(_password)).Select(p => p);
-                foreach (var vet in vets)
-                {
-                    Trace.WriteLine(vet.ToString());
+                Vet vet = dataBase.Vets.Where(c => c.PCode.Equals(_username)).Select(p => p).FirstOrDefault();
                     clinic_pCode.Text = vet.PCode.ToString();
                     city_fNameTextBox.Text = vet.Name.ToString();
                     sNameTextBox.Text = vet.SurName.ToString();
                     streetTextBox.Text = vet.SurName.ToString();
                     phoneTextBox.Text = vet.Phone.ToString();
                     startedDate.Text = vet.StartedAt.ToString();
-                }
             }
         }
 
@@ -147,42 +149,103 @@ namespace VeterinarySystem
 
         private void ok_Click(object sender, EventArgs e)
         {
+            city_fNameTextBox.ForeColor = System.Drawing.Color.Black;
+            streetTextBox.ForeColor = System.Drawing.Color.Black;
+            noTextBox.ForeColor = System.Drawing.Color.Black;
+            phoneTextBox.ForeColor = System.Drawing.Color.Black;
+            sNameTextBox.ForeColor = System.Drawing.Color.Black;
+
             if (_table.Equals("Clinic"))
             {
-                using(VeterinaryEntities dataBase = new VeterinaryEntities())
+                if (CheckValidation())
                 {
-                    Clinic clinic = dataBase.Clinics.FirstOrDefault(c => c.Name.Equals(_username) && c.City.Equals(_password));
+                    using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                    {
+                        Clinic clinic = dataBase.Clinics.FirstOrDefault(c => c.Name.Equals(_username));
                         clinic.City = city_fNameTextBox.Text;
                         clinic.Street = streetTextBox.Text;
                         clinic.No = noTextBox.Text;
                         clinic.Phone = phoneTextBox.Text;
-                    dataBase.SaveChanges();
+                        dataBase.SaveChanges();
+                    }
+                    Close();
                 }
             }
             else if (_table.Equals("Owner"))
             {
-                using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                if (CheckValidation())
                 {
-                    Owner owner = dataBase.Owners.FirstOrDefault(c => c.Name.Equals(_username) && c.SurName.Equals(_password));
+                    using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                    {
+                        Owner owner = dataBase.Owners.FirstOrDefault(c => c.PCode.Equals(_username));
                         owner.Name = city_fNameTextBox.Text;
                         owner.SurName = streetTextBox.Text;
                         owner.Phone = phoneTextBox.Text;
-                    dataBase.SaveChanges();
+                        dataBase.SaveChanges();
+                    }
+                    Close();
                 }
             }
             else if (_table.Equals("Vet"))
             {
-                using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                if (CheckValidation())
                 {
-                    Vet vet = dataBase.Vets.FirstOrDefault(c => c.Name.Equals(_username) && c.SurName.Equals(_password));
-                    vet.Name = city_fNameTextBox.Text;
-                    vet.SurName = streetTextBox.Text;
-                    vet.Phone = phoneTextBox.Text;
-                    vet.StartedAt = startedDate.Value.Date;
-                    dataBase.SaveChanges();
+                    using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                    {
+                        Vet vet = dataBase.Vets.FirstOrDefault(c => c.PCode.Equals(_username));
+                        vet.Name = city_fNameTextBox.Text;
+                        vet.SurName = streetTextBox.Text;
+                        vet.Phone = phoneTextBox.Text;
+                        vet.StartedAt = startedDate.Value.Date;
+                        dataBase.SaveChanges();
+                    }
+                    Close();
                 }
             }
-            Close();
+        }
+
+        private bool CheckValidation()
+        {
+            bool tf = true;
+            if (_table.Equals("Owner") || _table.Equals("Vet"))
+            {
+                if (!string.IsNullOrEmpty(phoneTextBox.Text))
+                    if (!Regex.IsMatch(phoneTextBox.Text, @"^86\d{7}$"))
+                    {
+                        phoneTextBox.ForeColor = System.Drawing.Color.Red;
+                        tf = false;
+                    }
+                if (!Regex.IsMatch(sNameTextBox.Text, @"^[\p{L} ]+$"))
+                {
+                    sNameTextBox.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+            }
+            else if(_table.Equals("Clinic"))
+            {
+
+                if (!Regex.IsMatch(phoneTextBox.Text, @"^86\d{7}$"))
+                {
+                    phoneTextBox.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+                if (!Regex.IsMatch(noTextBox.Text, @"^\d{1,5}[A-H]{0,1} {0,4}$"))
+                {
+                    noTextBox.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+                if (!Regex.IsMatch(streetTextBox.Text, @"^[\p{L} ]+ g{0,1}.{0,1}$"))
+                {
+                    streetTextBox.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+            }
+            if (!Regex.IsMatch(city_fNameTextBox.Text, @"^[\p{L} ]+$"))
+            {
+                city_fNameTextBox.ForeColor = System.Drawing.Color.Red;
+                tf = false;
+            }
+            return tf;
         }
 
         private void delete_Click(object sender, EventArgs e)

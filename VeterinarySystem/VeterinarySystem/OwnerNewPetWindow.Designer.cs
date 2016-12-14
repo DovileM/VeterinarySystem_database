@@ -50,6 +50,7 @@
             this.petsLabel = new System.Windows.Forms.Label();
             this.choosePet = new System.Windows.Forms.ComboBox();
             this.survive = new System.Windows.Forms.CheckBox();
+            this.weightFormat = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // required
@@ -160,7 +161,7 @@
             this.weight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weight.Location = new System.Drawing.Point(230, 149);
             this.weight.Name = "weight";
-            this.weight.Size = new System.Drawing.Size(178, 26);
+            this.weight.Size = new System.Drawing.Size(125, 26);
             this.weight.TabIndex = 50;
             // 
             // cancel
@@ -273,12 +274,25 @@
             this.survive.UseVisualStyleBackColor = true;
             this.survive.Visible = false;
             // 
+            // weightFormat
+            // 
+            this.weightFormat.AutoSize = true;
+            this.weightFormat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.weightFormat.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weightFormat.ForeColor = System.Drawing.Color.DarkBlue;
+            this.weightFormat.Location = new System.Drawing.Point(360, 152);
+            this.weightFormat.Name = "weightFormat";
+            this.weightFormat.Size = new System.Drawing.Size(48, 20);
+            this.weightFormat.TabIndex = 68;
+            this.weightFormat.Text = "xx.yyy";
+            // 
             // OwnerNewPetWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(443, 363);
+            this.Controls.Add(this.weightFormat);
             this.Controls.Add(this.survive);
             this.Controls.Add(this.choosePet);
             this.Controls.Add(this.petsLabel);
@@ -330,5 +344,6 @@
         private System.Windows.Forms.Label petsLabel;
         private System.Windows.Forms.ComboBox choosePet;
         private System.Windows.Forms.CheckBox survive;
+        private System.Windows.Forms.Label weightFormat;
     }
 }

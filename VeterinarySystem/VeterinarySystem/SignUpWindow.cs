@@ -2,18 +2,21 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace VeterinarySystem
 {
     public partial class SignUpWindow : Form
     {
-        private string _clinic_pCode;
+        private string _clinic;
+        private string _pCode;
         private string _city_fName;
         private string _street;
         private string _no;
         private string _phone;
         private string _sName;
+        private string _type;
         private int _selected;
 
         public SignUpWindow()
@@ -29,8 +32,9 @@ namespace VeterinarySystem
             SetFieldsNull();
             choose.SelectedIndex = 0;
             _selected = 0;
-
-            clinic_pCodeTextBox.Leave += GetClinic_PCode;
+            _type = "Owner";
+            clinicTextBox.Leave += GetClinic;
+            pCodeTextBox.Leave += GetPCode;
             city_sNameTextBox.Leave += GetCity_FName;
             sNameTextBox.Leave += GetSName;
             phoneTextBox.Leave += GetPhone;
@@ -42,7 +46,7 @@ namespace VeterinarySystem
         private void SeeOwnerLabels()
         {
             pCodeLabel.Visible = true;
-            clinic_pCodeTextBox.Visible = true;
+            pCodeTextBox.Visible = true;
             fNameLabel.Visible = true;
             city_sNameTextBox.Visible = true;
             sNameLabel.Visible = true;
@@ -56,7 +60,7 @@ namespace VeterinarySystem
         private void SeeClinicLabels()
         {
             clinicNameLabel.Visible = true;
-            clinic_pCodeTextBox.Visible = true;
+            clinicTextBox.Visible = true;
             cityLabel.Visible = true;
             city_sNameTextBox.Visible = true;
             streetLabel.Visible = true;
@@ -72,7 +76,8 @@ namespace VeterinarySystem
         private void ClearLabels()
         {
             pCodeLabel.Visible = false;
-            clinic_pCodeTextBox.Visible = false;
+            pCodeTextBox.Visible = false;
+            clinicTextBox.Visible = false;
             fNameLabel.Visible = false;
             city_sNameTextBox.Visible = false;
             sNameLabel.Visible = false;
@@ -94,7 +99,8 @@ namespace VeterinarySystem
 
         private void ClearTextBoxes()
         {
-            clinic_pCodeTextBox.Text = null;
+            clinicTextBox.Text = null;
+            pCodeTextBox.Text = null;
             city_sNameTextBox.Text = null;
             sNameTextBox.Text = null;
             phoneTextBox.Text = null;
@@ -104,7 +110,8 @@ namespace VeterinarySystem
 
         private void SetFieldsNull()
         {
-            _clinic_pCode = null;
+            _clinic = null;
+            _pCode = null;
             _no = null;
             _phone = null;
             _sName = null;
@@ -114,9 +121,13 @@ namespace VeterinarySystem
         #endregion
 
         #region Get Textbox as Text
-        private void GetClinic_PCode(object sender, EventArgs e)
+        private void GetClinic(object sender, EventArgs e)
         {
-            _clinic_pCode = (sender as TextBox).Text;
+            _clinic = (sender as TextBox).Text;
+        }
+        private void GetPCode(object sender, EventArgs e)
+        {
+            _pCode = (sender as TextBox).Text;
         }
         private void GetCity_FName(object sender, EventArgs e)
         {
@@ -128,7 +139,7 @@ namespace VeterinarySystem
         }
         private void GetPhone(object sender, EventArgs e)
         {
-                _phone = (sender as TextBox).Text;
+            _phone = (sender as TextBox).Text;
         }
         private void GetStreet(object sender, EventArgs e)
         {
@@ -156,9 +167,11 @@ namespace VeterinarySystem
             {
                 case 0:
                     SeeOwnerLabels();
+                    _type = "Owner";
                     break;
                 case 1:
                     SeeClinicLabels();
+                    _type = "Clinic";
                     break;
             }
         }
@@ -178,59 +191,117 @@ namespace VeterinarySystem
             if (ok)
                 Close();
             else
-                 MessageBox.Show("Something went wrong! Maybe some required fields are empty.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Something went wrong! Maybe some required fields are empty.", "Error", MessageBoxButtons.OK);
         }
 
         private bool InsertIntoTable(string table)
         {
+            clinicTextBox.ForeColor = System.Drawing.Color.Black;
+            pCodeTextBox.ForeColor = System.Drawing.Color.Black;
+            city_sNameTextBox.ForeColor = System.Drawing.Color.Black;
+            sNameTextBox.ForeColor = System.Drawing.Color.Black;
+            phoneTextBox.ForeColor = System.Drawing.Color.Black;
+            streetTextBox.ForeColor = System.Drawing.Color.Black;
+            noTextBox.ForeColor = System.Drawing.Color.Black;
             bool ok = true;
-            string str_connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\DatabaseVeterinary.mdf;Integrated Security=True";
 
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = str_connection;
-            connection.Open();
-
-            SqlCommand insert = new SqlCommand();
-            insert.Connection = connection;
-            insert.CommandType = CommandType.Text;
-            if (table.Equals("Owner"))
+            if (CheckValidation())
             {
-                insert.CommandText = "INSERT INTO Owner (PCode, Name, SurName, Phone) VALUES (@PC, @N, @SN, @P)";
-                insert.Parameters.Add(new SqlParameter("@PC", _clinic_pCode));
-                insert.Parameters.Add(new SqlParameter("@N", _city_fName));
-                insert.Parameters.Add(new SqlParameter("@SN", _sName));
-                if (string.IsNullOrEmpty(_phone))
-                    insert.Parameters.Add(new SqlParameter("@P", DBNull.Value));
-                else
-                    insert.Parameters.Add(new SqlParameter("@P", _phone));
-                Trace.WriteLine(_clinic_pCode + "  " + _city_fName + "  " + _sName + "  " + _phone);
+                string str_connection = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Dovile\Desktop\Veterinary\VeterinarySystem\VeterinarySystem\DatabaseVeterinary.mdf;Integrated Security=True";
 
+                SqlConnection connection = new SqlConnection();
+                connection.ConnectionString = str_connection;
+                connection.Open();
+
+                SqlCommand insert = new SqlCommand();
+                insert.Connection = connection;
+                insert.CommandType = CommandType.Text;
+                if (table.Equals("Owner"))
+                {
+                    insert.CommandText = "INSERT INTO Owner (PCode, Name, SurName, Phone) VALUES (@PC, @N, @SN, @P)";
+                    insert.Parameters.Add(new SqlParameter("@PC", _pCode));
+                    insert.Parameters.Add(new SqlParameter("@N", _city_fName));
+                    insert.Parameters.Add(new SqlParameter("@SN", _sName));
+                    if (string.IsNullOrEmpty(_phone))
+                        insert.Parameters.Add(new SqlParameter("@P", DBNull.Value));
+                    else
+                        insert.Parameters.Add(new SqlParameter("@P", _phone));
+                    Trace.WriteLine(_pCode + "  " + _city_fName + "  " + _sName + "  " + _phone);
+
+                }
+                else
+                {
+                    insert.CommandText = "INSERT INTO Clinic (Name, City, Street, No, Phone) VALUES (@N, @C, @S, @No, @P)";
+                    insert.Parameters.Add(new SqlParameter("@N", _clinic));
+                    insert.Parameters.Add(new SqlParameter("@C", _city_fName));
+                    insert.Parameters.Add(new SqlParameter("@S", _street));
+                    insert.Parameters.Add(new SqlParameter("@No", _no));
+                    insert.Parameters.Add(new SqlParameter("@P", _phone));
+                }
+
+                try
+                {
+                    insert.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    ok = false;
+                    Trace.WriteLine(e.Message);
+                }
+
+                connection.Close();
+                return ok;
+            }
+            return false;
+        }
+        private bool CheckValidation()
+        {
+            bool tf = true;
+            if (_type.Equals("Owner"))
+            {
+                if (!Regex.IsMatch(pCodeTextBox.Text, @"^[3-4]\d{4}[0-3][0-9]\d{4}$"))
+                {
+                    pCodeTextBox.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+                if (!string.IsNullOrEmpty(phoneTextBox.Text))
+                    if (!Regex.IsMatch(phoneTextBox.Text, @"^86\d{7}$"))
+                    {
+                        phoneTextBox.ForeColor = System.Drawing.Color.Red;
+                        tf = false;
+                    }
             }
             else
             {
-                insert.CommandText = "INSERT INTO Clinic (Name, City, Street, No, Phone) VALUES (@N, @C, @S, @No, @P)";
-                insert.Parameters.Add(new SqlParameter("@N", _clinic_pCode));
-                insert.Parameters.Add(new SqlParameter("@C", _city_fName));
-                insert.Parameters.Add(new SqlParameter("@S", _street));
-                insert.Parameters.Add(new SqlParameter("@No", _no));
-                insert.Parameters.Add(new SqlParameter("@P", _phone));
+                if (!Regex.IsMatch(streetTextBox.Text, @"^[\p{L} ]+ g{0,1}.{0,1}$"))
+                {
+                    streetTextBox.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+                if (!Regex.IsMatch(clinicTextBox.Text, @"^[\p{L} ]+$"))
+                {
+                    clinicTextBox.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+                if (!Regex.IsMatch(phoneTextBox.Text, @"^86\d{7}$"))
+                {
+                    phoneTextBox.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
+                if (!Regex.IsMatch(noTextBox.Text, @"^\d{1,5}[A-H]{0,1}$"))
+                {
+                    noTextBox.ForeColor = System.Drawing.Color.Red;
+                    tf = false;
+                }
             }
-
-            try
+            if (!Regex.IsMatch(city_sNameTextBox.Text, @"^[\p{L} ]+$"))
             {
-                insert.ExecuteNonQuery();
-            }
-            catch (SqlException e)
-            {
-                ok = false;
-                Trace.WriteLine(e.Message);
+                city_sNameTextBox.ForeColor = System.Drawing.Color.Red;
+                tf = false;
             }
 
-            connection.Close();
-            return ok;
-
+            return tf;
         }
-
 
     }
 }

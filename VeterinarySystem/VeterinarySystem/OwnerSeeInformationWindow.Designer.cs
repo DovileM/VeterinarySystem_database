@@ -32,6 +32,7 @@
             this.label = new System.Windows.Forms.Label();
             this.tableDataGridView = new System.Windows.Forms.DataGridView();
             this.cancel = new System.Windows.Forms.Button();
+            this.top5 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,12 +67,26 @@
             this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
+            // top5
+            // 
+            this.top5.AutoSize = true;
+            this.top5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.top5.Location = new System.Drawing.Point(369, 364);
+            this.top5.Name = "top5";
+            this.top5.Size = new System.Drawing.Size(216, 20);
+            this.top5.TabIndex = 34;
+            this.top5.Text = "See top5 clinics by treated pets.";
+            this.top5.UseVisualStyleBackColor = true;
+            this.top5.Visible = false;
+            this.top5.CheckedChanged += new System.EventHandler(this.top5_CheckedChanged);
+            // 
             // OwnerSeeInformationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(597, 424);
+            this.Controls.Add(this.top5);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.tableDataGridView);
             this.Controls.Add(this.label);
@@ -89,5 +104,6 @@
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.DataGridView tableDataGridView;
         private System.Windows.Forms.Button cancel;
+        private System.Windows.Forms.CheckBox top5;
     }
 }
