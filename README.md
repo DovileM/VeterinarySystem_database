@@ -1,2 +1,2 @@
 # database
-Thi project wa created for studies.
+Thi project was created for studies.
