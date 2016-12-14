@@ -57,7 +57,7 @@ namespace VeterinarySystem
                                 End = treat.End,
                                 Vet = vet.Name + " " + vet.SurName,
                                 Id = pet.Id
-                            }).OrderBy(p => p.End);
+                            }).OrderBy(p => p.End).GroupBy(c => c.Id, (key, c) => c.FirstOrDefault());
 
                 var pets1 = dataBase.Pets.Where(p => p.Owner.Equals(_pCode)).Select(p => p);
 
