@@ -13,6 +13,7 @@ namespace VeterinarySystem
         {
             InitializeComponent();
             _pCode = pCode;
+            top5.Visible = false;
             if (type.Equals("Clinic"))
                 ShowClinicsInformation();
             else if (type.Equals("Pet"))
@@ -56,11 +57,11 @@ namespace VeterinarySystem
                                 End = treat.End,
                                 Vet = vet.Name + " " + vet.SurName,
                                 Id = pet.Id
-                            });
+                            }).OrderBy(p => p.End);
 
                 var pets1 = dataBase.Pets.Where(p => p.Owner.Equals(_pCode)).Select(p => p);
 
-                _petID = new int[pets1.ToList().Count];
+                _petID = new int[pets.ToList().Count+pets1.ToList().Count];
 
                 int i = 0;
                 string[] petsNames = new string[pets.ToList().Count];
@@ -110,38 +111,48 @@ namespace VeterinarySystem
 
         private void ShowClinicsInformation()
         {
-            label.Text = "All clinics' information:";
+            tableDataGridView.Rows.Clear();
+            top5.Visible = true;
+            if (!top5.Checked)
+                label.Text = "All clinics' information:";
+            else
+                label.Text = "Top5 clinics' information:";
             string[] info = new string[] { "Clinic name", "City", "Adress", "Phone", "Vets" };
-
-            tableDataGridView.ColumnCount = info.Length;
-            for (int i = 0; i < info.Length; i++)
-            {
-                tableDataGridView.Columns[i].Name = info[i];
-            }
-
-            using (VeterinaryEntities dataBase = new VeterinaryEntities())
-            {
-                var clinics = dataBase.Clinics.Select(c => new
+                tableDataGridView.ColumnCount = info.Length;
+                for (int i = 0; i < info.Length; i++)
                 {
-                    Name = c.Name,
-                    Phone = c.Phone,
-                    City = c.City,
-                    Adress = c.Street + " g. " + c.No,
-                    Vets = dataBase.Vets.Where(v => v.Clinic.Equals(c.Name)).Select(v => v).Count()
-                }).OrderBy(c => c.City);
-
-                int i = 0;
-                foreach (var clinic in clinics)
-                {
-                    tableDataGridView.Rows.Add();
-                    tableDataGridView.Rows[i].Cells[0].Value = clinic.Name;
-                    tableDataGridView.Rows[i].Cells[1].Value = clinic.City;
-                    tableDataGridView.Rows[i].Cells[2].Value = clinic.Adress;
-                    tableDataGridView.Rows[i].Cells[3].Value = clinic.Phone;
-                    tableDataGridView.Rows[i].Cells[4].Value = clinic.Vets;
-                    i++;
+                    tableDataGridView.Columns[i].Name = info[i];
                 }
-            }
+
+                using (VeterinaryEntities dataBase = new VeterinaryEntities())
+                {
+                var clinics = (from c in dataBase.Clinics
+                            join vet in dataBase.Vets on c.Name equals vet.Clinic
+                            join treat in dataBase.Treatments on vet.PCode equals treat.Vet
+                            select new
+                            {
+                                Name = c.Name,
+                                Phone = c.Phone,
+                                City = c.City,
+                                Adress = c.Street + " g. " + c.No,
+                                Vets = dataBase.Vets.Where(v => v.Clinic.Equals(c.Name)).Select(v => v).Count(),
+                                Pets = dataBase.Treatments.Where(t => t.Vet.Equals(vet.PCode)).Count()
+                            }).GroupBy(c => c.Name, (key, c) => c.FirstOrDefault());
+
+                if (top5.Checked)
+                    clinics = clinics.OrderBy(c => c.Pets).Take(4);
+                    int i = 0;
+                    foreach (var clinic in clinics)
+                    {
+                        tableDataGridView.Rows.Add();
+                        tableDataGridView.Rows[i].Cells[0].Value = clinic.Name;
+                        tableDataGridView.Rows[i].Cells[1].Value = clinic.City;
+                        tableDataGridView.Rows[i].Cells[2].Value = clinic.Adress;
+                        tableDataGridView.Rows[i].Cells[3].Value = clinic.Phone;
+                        tableDataGridView.Rows[i].Cells[4].Value = clinic.Vets;
+                        i++;
+                    }
+                }
         }
 
         private void ShowVetsInformation()
@@ -252,6 +263,11 @@ namespace VeterinarySystem
         {
             tableDataGridView.Rows.Clear();
             ShowPetsInformation();
+        }
+
+        private void top5_CheckedChanged(object sender, EventArgs e)
+        {
+            ShowClinicsInformation();
         }
     }
 }

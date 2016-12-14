@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="67a95cb91fc242d4adcadf1e80498648" Name="Diagram1">
         <EntityTypeShape EntityType="DatabaseVeterinaryModel.Clinic" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseVeterinaryModel.Owner" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseVeterinaryModel.Pet" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseVeterinaryModel.Owner" Width="1.5" PointX="1.125" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseVeterinaryModel.Pet" Width="1.5" PointX="3.75" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseVeterinaryModel.Treatment" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseVeterinaryModel.Vet" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="DatabaseVeterinaryModel.VetToClinic" ManuallyRouted="false" />

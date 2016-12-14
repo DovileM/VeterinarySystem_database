@@ -34,7 +34,6 @@
             this.logout = new System.Windows.Forms.Button();
             this.editProfile = new System.Windows.Forms.Button();
             this.seePetInfo = new System.Windows.Forms.Button();
-            this.seeVetInfo = new System.Windows.Forms.Button();
             this.seeClinicInfo = new System.Windows.Forms.Button();
             this.insertNewPet = new System.Windows.Forms.Button();
             this.sickPet = new System.Windows.Forms.Button();
@@ -88,20 +87,10 @@
             this.seePetInfo.UseVisualStyleBackColor = true;
             this.seePetInfo.Click += new System.EventHandler(this.seePetInfo_Click);
             // 
-            // seeVetInfo
-            // 
-            this.seeVetInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seeVetInfo.Location = new System.Drawing.Point(160, 239);
-            this.seeVetInfo.Name = "seeVetInfo";
-            this.seeVetInfo.Size = new System.Drawing.Size(178, 27);
-            this.seeVetInfo.TabIndex = 11;
-            this.seeVetInfo.Text = "Vet\'s information";
-            this.seeVetInfo.UseVisualStyleBackColor = true;
-            // 
             // seeClinicInfo
             // 
             this.seeClinicInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.seeClinicInfo.Location = new System.Drawing.Point(160, 272);
+            this.seeClinicInfo.Location = new System.Drawing.Point(160, 239);
             this.seeClinicInfo.Name = "seeClinicInfo";
             this.seeClinicInfo.Size = new System.Drawing.Size(178, 27);
             this.seeClinicInfo.TabIndex = 12;
@@ -140,7 +129,6 @@
             this.Controls.Add(this.sickPet);
             this.Controls.Add(this.insertNewPet);
             this.Controls.Add(this.seeClinicInfo);
-            this.Controls.Add(this.seeVetInfo);
             this.Controls.Add(this.seePetInfo);
             this.Controls.Add(this.editProfile);
             this.Controls.Add(this.logout);
@@ -160,7 +148,6 @@
         private System.Windows.Forms.Button logout;
         private System.Windows.Forms.Button editProfile;
         private System.Windows.Forms.Button seePetInfo;
-        private System.Windows.Forms.Button seeVetInfo;
         private System.Windows.Forms.Button seeClinicInfo;
         private System.Windows.Forms.Button insertNewPet;
         private System.Windows.Forms.Button sickPet;

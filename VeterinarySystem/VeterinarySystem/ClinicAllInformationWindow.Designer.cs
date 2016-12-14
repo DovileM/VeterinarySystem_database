@@ -34,6 +34,7 @@
             this.choose = new System.Windows.Forms.ComboBox();
             this.cancel = new System.Windows.Forms.Button();
             this.tableDataGridView = new System.Windows.Forms.DataGridView();
+            this.top5 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.tableDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,6 +91,19 @@
             this.tableDataGridView.Size = new System.Drawing.Size(658, 212);
             this.tableDataGridView.TabIndex = 23;
             // 
+            // top5
+            // 
+            this.top5.AutoSize = true;
+            this.top5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.top5.Location = new System.Drawing.Point(519, 102);
+            this.top5.Name = "top5";
+            this.top5.Size = new System.Drawing.Size(59, 20);
+            this.top5.TabIndex = 24;
+            this.top5.Text = "Top5";
+            this.top5.UseVisualStyleBackColor = true;
+            this.top5.Visible = false;
+            this.top5.CheckedChanged += new System.EventHandler(this.top5_CheckedChanged);
+            // 
             // ClinicAllInformationWindow
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
@@ -97,6 +111,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(709, 388);
+            this.Controls.Add(this.top5);
             this.Controls.Add(this.tableDataGridView);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.choose);
@@ -118,5 +133,6 @@
         private System.Windows.Forms.ComboBox choose;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.DataGridView tableDataGridView;
+        private System.Windows.Forms.CheckBox top5;
     }
 }
